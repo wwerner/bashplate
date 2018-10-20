@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+  <div id='app'>
+    <!-- <img alt='Vue logo' src='./assets/logo.png'> -->
     <h1>basherplate</h1>
     <config />
     <result />
@@ -8,24 +8,23 @@
 </template>
 
 <script>
-import Config from "./components/Config";
-import Result from "./components/Result";
+import Config from './components/Config.vue';
+import Result from './components/Result.vue';
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     Result,
-    Config
-  }
+    Config,
+  },
 };
 </script>
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }

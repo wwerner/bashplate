@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+usage() {
+  printf "{{description}}\n"
+
+  printf "Usage: $(basename "$0") TODO ADD OPTIONS\n"
+  {{#each options}}
+    {{#with this}}
+    printf "\t-%s\t%s\n" "{{short}}" "{{description}}"
+    {{/with}}
+  {{/each}}
+}
+
+version() {
+  printf "0.0.1"
+}
+
+{{#each options}}
+  {{#with this}}
+    {{#unless flag}}
+{{long}}="{{default}}"
+    {{/unless}}
+  {{/with}}
+{{/each}}
+
+OPTSPEC=:{{#each options}}{{#with this}}{{short}}{{#unless flag}}:{{/unless}}{{/with}}{{/each}}
+
+  while getopts $OPTSPEC option; do
+    case "$option" in
+    {{#each options}}
+      {{#with this}}
+      {{short}} ) {{#if call}}{{call}}; {{/if}}{{#if exit}}exit {{exit}} {{/if}} ;;
+      {{/with}}
+    {{/each}}
+     \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;
+      : ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
+      * ) echo "Unimplemented option: -$OPTARG" >&2; exit 1;;
+    esac
+  done
+  shift $((OPTIND - 1))
+
+  if [ -z "$language" ] || [ -z "$branch" ] || [ -z "$message" ] ; then
+  echo "$usage" >&2
+  exit 1
+  fi
+
