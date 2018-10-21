@@ -13,7 +13,7 @@ jobs:
 
       - run: npm i
       - run: npm run build
-      - run: cp now.json dist/ && cd dist && ../node_modules/.bin/now -t ${NOW_TOKEN} -C --public && ../node_modules/.bin/now alias
+      - run: cp now.json dist/ && cd dist && ../node_modules/.bin/now -t ${NOW_TOKEN} -C --public && ../node_modules/.bin/now -t ${NOW_TOKEN} alias
 
       - save_cache:
           paths:
