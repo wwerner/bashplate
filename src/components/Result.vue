@@ -1,16 +1,13 @@
-<template>
-  <div class="result">
-    <h2>result</h2>
-    test <input v-model="description">
+<template xmlns:v-clipboard="http://www.w3.org/1999/xhtml">
     <div class="result-script">
-
-      <i class="clickable far fa-copy"
-        v-clipboard:copy="script">
-       </i>
-
-      <pre><code class="language-bash" v-html="script"></code></pre>
+        <pre>
+<a class="button is-outlined is-link is-inverted is-pulled-right"
+   v-clipboard:copy="script">
+    <span>Copy&nbsp;</span>
+    <span class="icon "><i class="far fa-copy fa-2x" ></i></span>
+</a><code class="language-bash" v-html="script"></code>
+        </pre>
     </div>
-  </div>
 </template>
 
 <script>
@@ -23,28 +20,16 @@ import template from '@/templates/posix.hbs';
 export default {
   name: 'Result',
   // eslint-disable-next-line
-  data: function () {
-    return {
-      description: 'foo',
-      options: [
-        {
-          short: 'h', long: 'help', description: 'Show this help message.', flag: true, required: false, call: 'usage', exit: '0',
-        },
-        {
-          short: 'v', long: 'version', description: 'Show version information.', flag: true, required: false, call: 'version', exit: '0',
-        },
-        {
-          short: 't', long: 'test', description: 'Test Parameter', flag: false, required: true, default: 'testContent',
-        },
-      ],
-    };
-  },
+  props: [
+    'description',
+    'options',
+  ],
   mounted() {
     Prism.highlightAll();
   },
   computed: {
     script() {
-      return template(this.$data);
+      return template(this);
     },
   },
   watch: {
@@ -54,16 +39,28 @@ export default {
       });
     },
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 
-<style scoped>
+<style>
 .result-script {
-  margin: 1vh;
+    margin: 1vh;
 }
-.clickable:hover {
-  cursor: pointer;
+
+/* override bulma's numner style as it messes w/ prism's */
+.number {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 0px;
+    display: inline;
+    font-size: 1rem;
+    height: 1em;
+    margin-right: 0rem;
+    min-width: 0rem;
+    padding: 0rem 0rem;
+    vertical-align: middle;
 }
 </style>

@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "bulma": "^0.7.2",
     "handlebars": "^4.0.12",
     "handlebars-loader": "^1.7.0",
     "prism": "^4.1.2",
