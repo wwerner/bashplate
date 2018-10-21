@@ -15,6 +15,7 @@
         <td>Long</td>
         <td>Description</td>
         <td>Flag</td>
+        <td>Default</td>
         <td>Call</td>
         <td>Exit</td>
         <td></td>
@@ -33,14 +34,15 @@
         </td>
         <td>
           <input class="input" type="text" v-model="opt.description" size="25" maxlength="150">
-
         </td>
         <td>
           <input type="checkbox" v-model="opt.flag">
         </td>
         <td>
-          <input class="input" type="text" v-model="opt.call" size="12" maxlength="30">
-
+          <input class="input" type="text" v-model="opt.def" size="10" maxlength="50">
+        </td>
+        <td>
+          <input class="input" type="text" v-model="opt.call" size="10" maxlength="30">
         </td>
         <td>
           <input class="input" type="number" min="0" step="1" max="255" v-model="opt.exit">
@@ -65,14 +67,15 @@
         </td>
         <td>
           <input class="input" type="text" v-model="newOpt.description" size="25" maxlength="150">
-
         </td>
         <td>
           <input type="checkbox" v-model="newOpt.flag">
         </td>
         <td>
+          <input class="input" type="text" v-model="newOpt.def" size="10" maxlength="50">
+        </td>
+        <td>
           <input class="input" type="text" v-model="newOpt.call" size="12" maxlength="30">
-
         </td>
         <td>
           <input class="input" type="number" min="0" step="1" max="255" v-model="newOpt.exit">

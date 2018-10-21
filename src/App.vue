@@ -61,7 +61,7 @@ export default {
           description: 'Test Parameter',
           flag: false,
           required: true,
-          default: 'testContent',
+          def: 'testContent',
         },
       ],
     };
