@@ -3,10 +3,17 @@
 usage() {
   printf "{{description}}\n"
 
-  printf "Usage: $(basename "$0") TODO ADD OPTIONS\n"
+  printf "Usage: $(basename "$0") "
   {{#each options}}
     {{#with this}}
-    printf "  -%s\t%s\n" "{{short}}" "{{description}}"
+  printf -- "{{#unless required}}[{{/unless}}-{{short}}{{#unless flag}}=< {{long}} >{{/unless}}{{#unless required}}]{{/unless}} "
+    {{/with}}
+  {{/each}}
+  printf "\n"
+
+  {{#each options}}
+    {{#with this}}
+    printf "  -%s\t%s - %s\n" "{{short}}" "{{long}}" "{{description}}"
     {{/with}}
   {{/each}}
 }
