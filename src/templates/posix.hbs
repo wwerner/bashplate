@@ -29,7 +29,7 @@ while getopts $OPTSPEC option; do
   case "$option" in
   {{#each options}}
     {{#with this}}
-    {{short}} ) {{#if call}}{{call}}; {{/if}}{{#unless flag}}opt_{{long}}=$OPTARG{{/unless}}{{#if exit}}exit {{exit}} {{/if}} ;;
+    {{short}} ) {{#if call}}{{call}}; {{/if}}{{#unless flag}}opt_{{long}}=$OPTARG; {{/unless}}{{#if exit}}exit {{exit}} {{/if}} ;;
     {{/with}}
   {{/each}}
    \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;

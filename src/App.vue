@@ -9,97 +9,9 @@
     </section>
     <div class="section">
 
-    <div class="columns">
-      <div class="column">
-        <div class="box">
-          <div class="field">
-            <div class="control">
-              <input class="input" type="text"
-                     placeholder="Script Description"
-                     v-model="description">
-            </div>
-          </div>
-          <table class="table">
-            <thead>
-            <tr>
-              <td>Required</td>
-              <td>Short</td>
-              <td>Long</td>
-              <td>Description</td>
-              <td>Flag</td>
-              <td>Call</td>
-              <td>Exit</td>
-              <td></td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="(opt, idx) in options" :key="opt.short">
-              <td>
-                <input type="checkbox" v-model="opt.required">
-              </td>
-              <td>
-                <input class="input" type="text" v-model="opt.short" size="1" maxlength="1">
-              </td>
-              <td>
-                <input class="input" type="text" v-model="opt.long" size="9" maxlength="9">
-              </td>
-              <td>
-                <input class="input" type="text" v-model="opt.description" size="25" maxlength="150">
-
-              </td>
-              <td>
-                <input type="checkbox" v-model="opt.flag">
-              </td>
-              <td>
-                <input class="input" type="text" v-model="opt.call" size="15" maxlength="30">
-
-              </td>
-              <td>
-                <input class="input" type="number" min="0" step="1" max="255" v-model="opt.exit">
-              </td>
-              <td>
-
-                <a class="button is-danger is-inverted" @click="removeOption(idx)">
-                  <span class="icon"><i class="fas fa-times"></i></span>
-                </a>
-
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="checkbox" v-model="newOpt.required">
-              </td>
-              <td>
-                <input class="input" type="text" v-model="newOpt.short" size="1" maxlength="1">
-              </td>
-              <td>
-                <input class="input" type="text" v-model="newOpt.long" size="9" maxlength="9">
-              </td>
-              <td>
-                <input class="input" type="text" v-model="newOpt.description" size="25" maxlength="150">
-
-              </td>
-              <td>
-                <input type="checkbox" v-model="newOpt.flag">
-              </td>
-              <td>
-                <input class="input" type="text" v-model="newOpt.call" size="15" maxlength="30">
-
-              </td>
-              <td>
-                <input class="input" type="number" min="0" step="1" max="255" v-model="newOpt.exit">
-              </td>
-              <td>
-
-                <a class="button is-primary is-inverted" @click="addOption(newOpt)">
-                  <span class="icon"><i class="fas fa-plus"></i></span>
-                </a>
-              </td>
-            </tr>
-            </tbody>
-
-          </table>
-        </div>
+    <div class="columns is-desktop">
+      <div class="column is-12-tablet is-12-mobile is-12-touch is-8-desktop is-7-widescreen is-7-fullhd">
+        <options :description="description" :options="options" @descriptionUpdate="descriptionUpdated" />
       </div>
       <div class="column">
         <div class="box">
@@ -113,11 +25,12 @@
 
 <script>
 import Result from './components/Result.vue';
+import Options from './components/Options.vue';
 
 export default {
   name: 'app',
   components: {
-    Result,
+    Result, Options,
   },
   // eslint-disable-next-line
   data: function () {
@@ -151,7 +64,6 @@ export default {
           default: 'testContent',
         },
       ],
-      newOpt: {},
     };
   },
   methods: {
@@ -161,6 +73,9 @@ export default {
     addOption(opt) {
       this.options.push(opt);
       this.newOpt = {};
+    },
+    descriptionUpdated(event) {
+      this.description = event;
     },
   },
 };
