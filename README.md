@@ -1,4 +1,4 @@
-# [WIP, not done yet]
+# [WIP, use at your own peril]
 
 # basherplate
 
