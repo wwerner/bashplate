@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <navigation />
     <section class="section  has-text-centered">
       <div class="container is-5">
         <!-- <img alt='Vue logo' src='./assets/logo.png'> -->
@@ -10,7 +11,7 @@
     <div class="section">
 
     <div class="columns is-desktop">
-      <div class="column is-12-tablet is-12-mobile is-12-touch is-8-desktop is-7-widescreen is-7-fullhd">
+      <div class="column is-12-tablet is-12-mobile is-12-touch is-12-desktop is-7-widescreen is-7-fullhd">
         <options :description="description" :options="options" @descriptionUpdate="descriptionUpdated" />
       </div>
       <div class="column">
@@ -26,11 +27,12 @@
 <script>
 import Result from './components/Result.vue';
 import Options from './components/Options.vue';
+import Navigation from './components/Navigation.vue';
 
 export default {
   name: 'app',
   components: {
-    Result, Options,
+    Result, Options, Navigation,
   },
   // eslint-disable-next-line
   data: function () {
