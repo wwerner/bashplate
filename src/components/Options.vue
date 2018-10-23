@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" id="options">
     <div class="field">
       <div class="control">
         <input class="input" type="text"
@@ -125,4 +125,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#options {
+  overflow: scroll
+}
+::-webkit-scrollbar {
+  display:none;
+}
+
+</style>
 
