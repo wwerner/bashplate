@@ -1,11 +1,6 @@
 <template>
-  <nav class="navbar is-transparent">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="../">
-          <img src="http://test.de/test.png" alt="Logo">
-        </a>
-      </div>
-      <div id="navbarMenu" class="navbar-menu">
+  <nav class="navbar is-transparent  is-fixed-top">
+      <div id="navbarMenu" class="navbar-menu is-active">
         <div class="navbar-end">
           <div class="tabs is-right">
             <ul>
