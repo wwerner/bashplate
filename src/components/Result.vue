@@ -6,7 +6,7 @@
 <a class="button is-outlined is-link is-inverted is-pulled-right"
    v-clipboard:copy="script">
     <span>Copy&nbsp;</span>
-    <span class="icon"><i class="far fa-copy fa-2x"></i></span>
+    <span class="icon"><i class="far fa-copy"></i></span>
 </a><code class="language-bash" v-html="script"></code>
         </pre>
   </div>
