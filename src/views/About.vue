@@ -18,7 +18,9 @@
             It is not intended to be used in a round-trip fashion, although you could
             swap out the generated portion in your file with a newly generated one adding
             more options. But generally, your on your own after generation.<br/>
-            <br/>
+            It kinda works on a reasonable recent phone in landscape mode, but if you want to
+            generate shell scripts on your mobile on the go, you should really have you checked out.
+            <br/><br/>
             <router-link to="/" class=" is-primary button">Go generate!</router-link>
             <p class="is-pulled-right">Written by <a href="https://wolfgang-werner.net">this human</a>.</p>
           </div>
