@@ -80,14 +80,13 @@
               <li><a href="https://codeburst.io/13-tips-tricks-for-writing-shell-scripts-with-awesome-ux-19a525ae05ae">
                 Some tips for writing shell scripts.</a></li>
               <li><a href="https://kvz.io/blog/2013/11/21/bash-best-practices/">
-                And some more.</a></li>
-              <li><a href="http://wiki.bash-hackers.org/howto/getopts_tutorial"></a>Getopts Tutorial</li>
-              <li><a href="http://man7.org/linux/man-pages/man1/getopt.1.html"></a>GNU Getopt</li>
-              <li><a href="https://argbash.io/"></a>Argbash</li>
-              <li><a href=""></a>Getopt Long</li>
+                And some more tips.</a></li>
+              <li><a href="http://wiki.bash-hackers.org/howto/getopts_tutorial">Getopts Tutorial</a></li>
+              <li><a href="http://man7.org/linux/man-pages/man1/getopt.1.html">GNU Getopt</a></li>
+              <li><a href="https://argbash.io/">Argbash</a></li>
               <li>Option parsers for
               <a href="https://github.com/Kotlin/kotlinx.cli">Kotlin</a>,
-                <a href="https://picocli.info/">Java (I love picocli)</a>, tbc.
+                <a href="https://picocli.info/">Java (♥ this one)</a>, tbc.
               </li>
             </ul>
           </div>
