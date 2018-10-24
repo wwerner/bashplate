@@ -23,7 +23,7 @@ usage() {
 
   {{#each options}}
     {{#with this}}
-  printf "  -%s\t%s - %s\n" "{{short}}" "{{long}}" "{{description}}"
+  printf "  -%s\t%s - %s%s\n" "{{short}}" "{{long}}" "{{description}}" "{{#if def}} (default: {{def}}){{/if}}"
     {{/with}}
   {{/each}}
 }
@@ -56,6 +56,7 @@ while getopts $OPTSPEC option; do
 done
 shift $((OPTIND - 1))
 
+# FIXME: remove last ||
 if {{#each options}}{{#with this}}{{#if required}}[ -z "$opt_{{long}}" ]{{#unless last}} || {{/unless}}{{/if}}{{/with}}{{/each}} ; then
   usage
   exit 1

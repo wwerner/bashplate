@@ -16,6 +16,7 @@
             and their details for receiving script arguments.<br/>
             <br/>
             <router-link to="/" class=" is-primary button">Go generate!</router-link>
+            <p class="is-pulled-right">Written by <a href="https://wolfgang-werner.net">this human</a>.</p>
           </div>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- this is probably not how you do it ... -->
           <div class="tile is-child box">

@@ -1,15 +1,7 @@
 <template>
   <div class="section">
-    <div class="columns is-desktop">
-      <div class="column is-12-tablet is-12-mobile is-12-touch is-12-desktop is-7-widescreen is-7-fullhd">
-        <options :description="description" :options="options" @descriptionUpdate="descriptionUpdated" />
-      </div>
-      <div class="column">
-        <div class="box">
-          <result :description="description" :options="options"/>
-        </div>
-      </div>
-    </div>
+    <options :description="description" :options="options" @descriptionUpdate="descriptionUpdated"/>
+    <result :description="description" :options="options"/>
   </div>
 </template>
 
@@ -20,7 +12,8 @@ import Options from '@/components/Options.vue';
 export default {
   name: 'generator',
   components: {
-    Result, Options,
+    Result,
+    Options,
   },
   // eslint-disable-next-line
   data: function () {

@@ -46,7 +46,7 @@ export default {
 
 <style>
 .result-script {
-  font-size: smaller;
+
 }
 
 /* override bulma's numner style as it messes w/ prism's */
