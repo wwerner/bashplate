@@ -4,12 +4,6 @@ set -o errexit  # exit on error
 set -o nounset  # don't allow unset variables
 # set -o xtrace # enable for debugging
 
-# convenience variables
-__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
-__base="$(basename ${__file} .sh)"
-__root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point your project's root
-
 usage() {
   printf "{{description}}\n"
 
@@ -28,10 +22,7 @@ usage() {
   {{/each}}
 }
 
-version() {
-  printf "0.0.1\n"
-}
-
+# default values
 {{#each options}}
   {{#with this}}
     {{#unless flag}}
@@ -40,8 +31,8 @@ opt_{{long}}="{{def}}"
   {{/with}}
 {{/each}}
 
+# option parsing
 OPTSPEC=:{{#each options}}{{#with this}}{{short}}{{#unless flag}}:{{/unless}}{{/with}}{{/each}}
-
 while getopts $OPTSPEC option; do
   case "$option" in
   {{#each options}}
@@ -56,11 +47,21 @@ while getopts $OPTSPEC option; do
 done
 shift $((OPTIND - 1))
 
-# FIXME: remove last ||
-if {{#each options}}{{#with this}}{{#if required}}[ -z "$opt_{{long}}" ]{{#unless last}} || {{/unless}}{{/if}}{{/with}}{{/each}} ; then
+# required option validation
+if {{#each options}}{{#with this}}{{#if required}}[ -z "$opt_{{long}}" ]{{#unless @last}} || {{/unless}}{{/if}}{{/with}}{{/each}} ; then
   usage
   exit 1
 fi
+
+# convenience variables
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+__base="$(basename ${__file} .sh)"
+__root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point your project's root
+
+version() {
+  printf "0.0.1\n"
+}
 
 # this would be a good place to start writing your actual script.
 
