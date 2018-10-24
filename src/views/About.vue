@@ -89,6 +89,16 @@
                 <a href="https://picocli.info/">Java (♥ this one)</a>, tbc.
               </li>
             </ul>
+            <p>Bash Plate is standing on the shoulders of these giants: 
+            <a href="https://vuejs.org/">Vue.js</a>, 
+            <a href="https://bulma.io/">Bulma</a>, 
+            <a href="https://prismjs.com/">Prism.js</a>, 
+            <a href="https://handlebarsjs.com/">handlebars</a>.</p>
+            <p>Thanks to 
+              <a href="https://github.com">Github</a> for source code hosting,
+              <a href="https://zeit.co">Zeit</a> for hosting,
+              <a href="https://circleci.com">CircleCI</a> for CI/CD.
+            </p>
           </div>
         </div>
 
