@@ -13,7 +13,14 @@ jobs:
 
       - run: npm i
       - run: npm run build
-      - run: cp now.json dist/ && cd dist && ../node_modules/.bin/now -t ${NOW_TOKEN} -C --public && ../node_modules/.bin/now -t ${NOW_TOKEN} alias
+      - run:
+          name: deploy
+          command: |
+            cp now.json dist/
+            cd dist
+            ../node_modules/.bin/now -t ${NOW_TOKEN} -C --public
+            ../node_modules/.bin/now -t ${NOW_TOKEN} alias rm bashplate.now.sh
+            ../node_modules/.bin/now -t ${NOW_TOKEN} alias
 
       - save_cache:
           paths:
