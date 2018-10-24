@@ -1,9 +1,7 @@
 <template>
   <div class="section">
-    <div class="container">
-      <p>Bash Plate lets you generate boilerplate for shell scripts that takes care of receiving, parsing, 
-      validating and documenting script arguments.</p>
-    </div>
+    <h2 class="subtitle">Bash Plate lets you generate boilerplate for shell scripts that takes care of receiving, parsing, 
+      validating and documenting script arguments.</h2>
     <options :description="description" :options="options" @descriptionUpdate="descriptionUpdated"/>
     <result :description="description" :options="options"/>
   </div>
