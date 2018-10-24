@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+set -o errexit  # exit on error
+set -o nounset  # don't allow unset variables
+# set -o xtrace # enable for debugging
+
+# convenience variables
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+__base="$(basename ${__file} .sh)"
+__root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point your project's root
+
 usage() {
   printf "{{description}}\n"
 
