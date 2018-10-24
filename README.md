@@ -28,27 +28,13 @@ If you can relate, give it a spin.
 * Minimum / No dependencies
 * Easy to put on the web, so I cannot lose it & don't have to install anything.
 
-## Project setup
-```
-npm install
-```
+## Development
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Contributions welcome.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+* `npm install` - Project setup
+* `npm run serve` - Compiles and hot-reloads for development
+* `npm run build` - Compiles and minifies for production
+* `npm run test` - Run your tests
+* `npm run lint` - Lints and fixes files
+* `npm run deploy` - Deploys to Zeit at https://bashplate.now.sh.
