@@ -13,7 +13,7 @@
           </ul>
           <span class="navbar-item">
                 <a class="button is-dark is-outlined"
-                   href="https://github.com/wwerner/basherplate">
+                   href="https://github.com/wwerner/bashplate">
                     <span>Source</span>
                     <span class="icon">
                         <i class="fab fa-github"></i>

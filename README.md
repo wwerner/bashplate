@@ -1,10 +1,10 @@
 # [WIP, use at your own peril]
 
-# basherplate
+# Bash Plate
 
-Basherplate generates bash boilerplate code for option parsing and validation.
+Bash Plate generates bash boilerplate code for option parsing and validation.
 
-Currently deployed here: https://basherplate.now.sh/
+Currently deployed here: https://bashplate.now.sh/
 
 Why? Each time (long enough to forget all the details after writing the last one) I need to write a shell script:
 * 🧐 "I want this to be reuseable, so I'll use proper options & help messages"
