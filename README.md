@@ -1,5 +1,3 @@
-# [WIP, use at your own peril]
-
 # Bash Plate
 
 Bash Plate generates bash boilerplate code for option parsing and validation.
