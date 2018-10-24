@@ -81,6 +81,10 @@
                 Some tips for writing shell scripts.</a></li>
               <li><a href="https://kvz.io/blog/2013/11/21/bash-best-practices/">
                 And some more.</a></li>
+              <li><a href=""></a>Getopts</li>
+              <li><a href=""></a>GNU Getopt</li>
+              <li><a href=""></a>Argbash</li>
+              <li><a href=""></a>Getopt Long</li>
               <li>Option parsers for
               <a href="https://github.com/Kotlin/kotlinx.cli">Kotlin</a>,
                 <a href="https://picocli.info/">Java (I love picocli)</a>, tbc.
