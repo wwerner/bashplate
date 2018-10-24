@@ -15,6 +15,10 @@
             is reasonably clean without you having to remember the different possibilities
             and their details for receiving script arguments.<br/>
             <br/>
+            It is not intended to be used in a round-trip fashion, although you could
+            swap out the generated portion in your file with a newly generated one adding
+            more options. But generally, your on your own after generation.<br/>
+            <br/>
             <router-link to="/" class=" is-primary button">Go generate!</router-link>
             <p class="is-pulled-right">Written by <a href="https://wolfgang-werner.net">this human</a>.</p>
           </div>
