@@ -23,7 +23,7 @@ usage() {
 
   {{#each options}}
     {{#with this}}
-    printf "  -%s\t%s - %s\n" "{{short}}" "{{long}}" "{{description}}"
+  printf "  -%s\t%s - %s\n" "{{short}}" "{{long}}" "{{description}}"
     {{/with}}
   {{/each}}
 }
@@ -56,8 +56,11 @@ while getopts $OPTSPEC option; do
 done
 shift $((OPTIND - 1))
 
-if [ -z "$language" ] || [ -z "$branch" ] || [ -z "$message" ] ; then
-echo "$usage" >&2
-exit 1
+if {{#each options}}{{#with this}}{{#if required}}[ -z "$opt_{{long}}" ]{{#unless last}} || {{/unless}}{{/if}}{{/with}}{{/each}} ; then
+  usage
+  exit 1
 fi
+
+# this would be a good place to start writing your actual script.
+
 
