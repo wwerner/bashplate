@@ -22,6 +22,10 @@ usage() {
   {{/each}}
 }
 
+version() {
+  printf "0.0.1\n"
+}
+
 # default values
 {{#each options}}
   {{#with this}}
@@ -59,9 +63,7 @@ __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point your project's root
 
-version() {
-  printf "0.0.1\n"
-}
+
 
 # this would be a good place to start writing your actual script.
 

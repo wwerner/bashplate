@@ -22,6 +22,10 @@ usage() {
   {{/each}}
 }
 
+version() {
+  printf "0.0.1\n"
+}
+
 # default values
 {{#each options}}
   {{#with this}}
@@ -33,19 +37,23 @@ opt_{{long}}="{{def}}"
 
 # option parsing
 OPTSPEC=:{{#each options}}{{#with this}}{{short}}{{#unless flag}}:{{/unless}}{{/with}}{{/each}}
-while getopts $OPTSPEC option; do
-  case "$option" in
+OPTSPEC_LONG={{#each options}}{{#with this}}{{long}}{{#unless flag}}:{{/unless}}{{/with}}{{#unless @last}},{{/unless}}{{/each}}
+
+SCRIPT=`basename $0`
+OPTS=`getopt --name "$SCRIPT" --options $OPTSPEC --long $OPTSPEC_LONG -- "$@"`
+
+while [ $# -gt 0 ]; do
+  case "$1" in
   {{#each options}}
     {{#with this}}
-    {{short}} ) {{#if call}}{{call}}; {{/if}}{{#unless flag}}opt_{{long}}=$OPTARG; {{/unless}}{{#if exit}}exit {{exit}} {{/if}} ;;
+    -{{short}} {{#if long}}| --{{long}}{{/if}}) {{#if call}}{{call}}; {{/if}}{{#unless flag}}opt_{{long}}=$2; shift; {{/unless}} {{#if exit}}exit {{exit}} {{/if}} ;;
     {{/with}}
   {{/each}}
-   \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;
-    : ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
-    * ) echo "Unimplemented option: -$OPTARG" >&2; exit 1;;
+    --) shift; break ;;
+    *) break ;;
   esac
+  shift
 done
-shift $((OPTIND - 1))
 
 # required option validation
 if {{#each options}}{{#with this}}{{#if required}}[ -z "$opt_{{long}}" ]{{#unless @last}} || {{/unless}}{{/if}}{{/with}}{{/each}} ; then
@@ -59,10 +67,5 @@ __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename ${__file} .sh)"
 __root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point your project's root
 
-version() {
-  printf "0.0.1\n"
-}
 
 # this would be a good place to start writing your actual script.
-
-
