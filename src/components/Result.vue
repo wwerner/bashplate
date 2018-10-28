@@ -1,5 +1,11 @@
 <template xmlns:v-clipboard="http://www.w3.org/1999/xhtml">
   <div class="result-script">
+    <div class="tabs">
+      <ul>
+        <li :class="{'is-active': flavor === 'posix'}" @click="flavor = 'posix'"><a>POSIX</a></li>
+        <li :class="{'is-active': flavor === 'gnu'}" @click="flavor = 'gnu'"><a>GNU</a></li>
+      </ul>
+    </div>
 
     <!-- Don't 'fix' the code layout, it is required as in <pre>, otherwise we get whitespace in the script-->
     <pre>
@@ -17,20 +23,30 @@ import Prism from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-bash';
 import 'prismjs/themes/prism-tomorrow.css';
 
-import template from '@/templates/posix.hbs';
+import posixTemplate from '@/templates/posix.hbs';
+import gnuTemplate from '@/templates/gnu.hbs';
 
 export default {
   name: 'Result',
   props: [
     'description',
-    'options',
+    'options'
   ],
+  data() {
+    return {
+      flavor: 'posix',
+      templates: {
+        'posix': posixTemplate,
+        'gnu': gnuTemplate,
+      }
+    }
+  },
   mounted() {
     Prism.highlightAll();
   },
   computed: {
     script() {
-      return template(this);
+      return this.templates[this.flavor](this);
     },
   },
   watch: {

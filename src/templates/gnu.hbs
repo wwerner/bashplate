@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+GNUUUUUUUUUUUUUUUUUU
+
+set -o errexit  # exit on error
+set -o nounset  # don't allow unset variables
+# set -o xtrace # enable for debugging
+
+usage() {
+  printf "{{description}}\n"
+
+  printf "Usage: $(basename "$0") "
+  {{#each options}}
+    {{#with this}}
+  printf -- "{{#unless required}}[{{/unless}}-{{short}}{{#unless flag}}=< {{long}} >{{/unless}}{{#unless required}}]{{/unless}} "
+    {{/with}}
+  {{/each}}
+  printf "\n"
+
+  {{#each options}}
+    {{#with this}}
+  printf "  -%s\t%s - %s%s\n" "{{short}}" "{{long}}" "{{description}}" "{{#if def}} (default: {{def}}){{/if}}"
+    {{/with}}
+  {{/each}}
+}
+
+# default values
+{{#each options}}
+  {{#with this}}
+    {{#unless flag}}
+opt_{{long}}="{{def}}"
+    {{/unless}}
+  {{/with}}
+{{/each}}
+
+# option parsing
+OPTSPEC=:{{#each options}}{{#with this}}{{short}}{{#unless flag}}:{{/unless}}{{/with}}{{/each}}
+while getopts $OPTSPEC option; do
+  case "$option" in
+  {{#each options}}
+    {{#with this}}
+    {{short}} ) {{#if call}}{{call}}; {{/if}}{{#unless flag}}opt_{{long}}=$OPTARG; {{/unless}}{{#if exit}}exit {{exit}} {{/if}} ;;
+    {{/with}}
+  {{/each}}
+   \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;
+    : ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
+    * ) echo "Unimplemented option: -$OPTARG" >&2; exit 1;;
+  esac
+done
+shift $((OPTIND - 1))
+
+# required option validation
+if {{#each options}}{{#with this}}{{#if required}}[ -z "$opt_{{long}}" ]{{#unless @last}} || {{/unless}}{{/if}}{{/with}}{{/each}} ; then
+  usage
+  exit 1
+fi
+
+# convenience variables
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+__base="$(basename ${__file} .sh)"
+__root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point your project's root
+
+version() {
+  printf "0.0.1\n"
+}
+
+# this would be a good place to start writing your actual script.
+
+
