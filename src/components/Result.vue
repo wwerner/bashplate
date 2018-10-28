@@ -28,6 +28,8 @@ import Prism from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-bash';
 import 'prismjs/themes/prism-tomorrow.css';
 
+import FileSaver from 'file-saver';
+
 import posixTemplate from '@/templates/posix.hbs';
 import gnuTemplate from '@/templates/gnu.hbs';
 
@@ -35,16 +37,16 @@ export default {
   name: 'Result',
   props: [
     'description',
-    'options'
+    'options',
   ],
   data() {
     return {
       flavor: 'posix',
       templates: {
-        'posix': posixTemplate,
-        'gnu': gnuTemplate,
-      }
-    }
+        posix: posixTemplate,
+        gnu: gnuTemplate,
+      },
+    };
   },
   mounted() {
     Prism.highlightAll();
@@ -63,8 +65,9 @@ export default {
   },
   methods: {
     save() {
-      console.log("saving")
-    }
+      const blob = new Blob([this.script], { type: 'text/plain;charset=utf-8' });
+      FileSaver.saveAs(blob, 'bashplate.sh');
+    },
   },
 };
 </script>
