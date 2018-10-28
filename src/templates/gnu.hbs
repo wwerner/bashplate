@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-GNUUUUUUUUUUUUUUUUUU
-
 set -o errexit  # exit on error
 set -o nounset  # don't allow unset variables
 # set -o xtrace # enable for debugging
@@ -12,14 +10,14 @@ usage() {
   printf "Usage: $(basename "$0") "
   {{#each options}}
     {{#with this}}
-  printf -- "{{#unless required}}[{{/unless}}-{{short}}{{#unless flag}}=< {{long}} >{{/unless}}{{#unless required}}]{{/unless}} "
+  printf -- "{{#unless required}}[{{/unless}}-{{short}}{{#if long}}, --{{long}}{{/if}}{{#unless flag}}=< {{long}} >{{/unless}}{{#unless required}}]{{/unless}} "
     {{/with}}
   {{/each}}
   printf "\n"
 
   {{#each options}}
     {{#with this}}
-  printf "  -%s\t%s - %s%s\n" "{{short}}" "{{long}}" "{{description}}" "{{#if def}} (default: {{def}}){{/if}}"
+  printf "  -%s{{#if long}}, --%s{{/if}}\t%s%s\n" "{{short}}" "{{long}}" "{{description}}" "{{#if def}} (default: {{def}}){{/if}}"
     {{/with}}
   {{/each}}
 }

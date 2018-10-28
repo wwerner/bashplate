@@ -3,7 +3,7 @@
     <div class="tabs">
       <ul>
         <li :class="{'is-active': flavor === 'posix'}" @click="flavor = 'posix'"><a>POSIX</a></li>
-        <li :class="{'is-active': flavor === 'gnu'}" @click="flavor = 'gnu'"><a>GNU</a></li>
+        <li :class="{'is-active': flavor === 'gnu'}" @click="flavor = 'gnu'"><a>GNU (w/ --long-opts)</a></li>
       </ul>
     </div>
 
