@@ -10,9 +10,14 @@
     <!-- Don't 'fix' the code layout, it is required as in <pre>, otherwise we get whitespace in the script-->
     <pre>
 <a class="button is-outlined is-link is-inverted is-pulled-right"
+   style="margin-left: 1vh;"
    v-clipboard:copy="script">
     <span>Copy&nbsp;</span>
-    <span class="icon"><i class="far fa-copy"></i></span>
+    <span class="icon"><i class="fa fa-copy"></i></span>
+</a><a class="button is-outlined is-link is-inverted is-pulled-right"
+       @click="save">
+    <span>Download&nbsp;</span>
+    <span class="icon"><i class="fa fa-download"></i></span>
 </a><code class="language-bash" v-html="script"></code>
         </pre>
   </div>
@@ -56,7 +61,11 @@ export default {
       });
     },
   },
-  methods: {},
+  methods: {
+    save() {
+      console.log("saving")
+    }
+  },
 };
 </script>
 
