@@ -27,7 +27,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- this is probably not how you do it ... -->
           <div class="tile is-child box">
             <p class="title">Why?</p>
-            <p class="subtitle">Why does this thing exist?</p>
+            <p class="subtitle">Why does it even exist?</p>
 
             Each time I need to write a shell script
             - which is <em>exactly</em> long enough to forget all the details after writing the last one -
