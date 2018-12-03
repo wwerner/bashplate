@@ -55,41 +55,13 @@
 
         </td>
       </tr>
-      <tr>
-        <td>
-          <input type="checkbox" v-model="newOpt.required">
-        </td>
-        <td>
-          <input class="input" type="text" v-model="newOpt.short" size="1" maxlength="1">
-        </td>
-        <td>
-          <input class="input" type="text" v-model="newOpt.long" size="9" maxlength="9">
-        </td>
-        <td>
-          <input class="input" type="text" v-model="newOpt.description" size="25" maxlength="150">
-        </td>
-        <td>
-          <input type="checkbox" v-model="newOpt.flag">
-        </td>
-        <td>
-          <input class="input" type="text" v-model="newOpt.def" size="10" maxlength="50">
-        </td>
-        <td>
-          <input class="input" type="text" v-model="newOpt.call" size="12" maxlength="30">
-        </td>
-        <td>
-          <input class="input" type="number" min="0" step="1" max="255" v-model="newOpt.exit">
-        </td>
-        <td>
-
-          <a class="button is-primary is-inverted" @click="addOption(newOpt)">
-            <span class="icon"><i class="fas fa-plus"></i></span>
-          </a>
-        </td>
-      </tr>
       </tbody>
-
     </table>
+    
+    <a class="button is-primary" @click="addOption(newOpt)">
+      <span>Add parameter</span>
+      <span class="icon"><i class="fas fa-plus"></i></span>
+    </a>
   </div>
 </template>
 
