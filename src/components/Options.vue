@@ -30,7 +30,7 @@
           <input class="input" type="text" v-model="opt.short" size="1" maxlength="1">
         </td>
         <td>
-          <input class="input" type="text" v-model="opt.long" size="9" maxlength="9">
+          <input class="input" type="text" v-model="opt.long" size="9" maxlength="25">
         </td>
         <td>
           <input class="input" type="text" v-model="opt.description" size="25" maxlength="150">
