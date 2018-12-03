@@ -1,14 +1,14 @@
 <template xmlns:v-clipboard="http://www.w3.org/1999/xhtml">
-  <div class="result-script">
-    <div class="tabs">
-      <ul>
-        <li :class="{'is-active': flavor === 'posix'}" @click="flavor = 'posix'"><a>POSIX</a></li>
-        <li :class="{'is-active': flavor === 'gnu'}" @click="flavor = 'gnu'"><a>GNU (w/ --long-opts)</a></li>
-      </ul>
-    </div>
+<div class="result-script">
+  <div class="tabs">
+    <ul>
+      <li :class="{'is-active': flavor === 'posix'}" @click="flavor = 'posix'"><a>POSIX</a></li>
+      <li :class="{'is-active': flavor === 'gnu'}" @click="flavor = 'gnu'"><a>GNU (w/ --long-opts)</a></li>
+    </ul>
+  </div>
 
-    <!-- Don't 'fix' the code layout, it is required as in <pre>, otherwise we get whitespace in the script-->
-    <pre>
+  <!-- Don't 'fix' the code layout, it is required as in <pre>, otherwise we get whitespace in the script-->
+  <pre>
 <a class="button is-outlined is-link is-inverted is-pulled-right"
    style="margin-left: 1vh;"
    v-clipboard:copy="script">
@@ -20,7 +20,7 @@
     <span class="icon"><i class="fa fa-download"></i></span>
 </a><code class="language-bash" v-html="script"></code>
         </pre>
-  </div>
+</div>
 </template>
 
 <script>
@@ -55,6 +55,15 @@ export default {
     script() {
       return this.templates[this.flavor](this);
     },
+    requiredOptions() {
+      return this.options.filter(opt => opt.required)
+    },
+    flagOptions() {
+      return this.options.filter(opt => opt.flag === true)
+    },
+    parameterOptions() {
+      return this.options.filter(opt => opt.flag === false)
+    }
   },
   watch: {
     script() {
@@ -65,7 +74,7 @@ export default {
   },
   methods: {
     save() {
-      const blob = new Blob([this.script], { type: 'text/plain;charset=utf-8' });
+      const blob = new Blob([this.script], {type: 'text/plain;charset=utf-8'});
       FileSaver.saveAs(blob, 'bashplate.sh');
     },
   },

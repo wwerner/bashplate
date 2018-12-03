@@ -27,11 +27,14 @@ version() {
 }
 
 # default values
-{{#each options}}
+{{#each flagOptions}}
   {{#with this}}
-    {{#unless flag}}
-opt_{{long}}="{{def}}"
-    {{/unless}}
+    opt_{{long}}="false"
+  {{/with}}
+{{/each}}
+{{#each parameterOptions}}
+  {{#with this}}
+    opt_{{long}}="{{def}}"
   {{/with}}
 {{/each}}
 
@@ -46,7 +49,7 @@ while [ $# -gt 0 ]; do
   case "$1" in
   {{#each options}}
     {{#with this}}
-    -{{short}} {{#if long}}| --{{long}}{{/if}}) {{#if call}}{{call}}; {{/if}}{{#unless flag}}opt_{{long}}=$2; shift; {{/unless}} {{#if exit}}exit {{exit}} {{/if}} ;;
+    -{{short}} {{#if long}}| --{{long}}{{/if}}) {{#if call}}{{call}}; {{/if}}{{#unless flag}}opt_{{long}}=$2; shift; {{else}}opt_{{long}}="true"; {{/unless}} {{#if exit}}exit {{exit}} {{/if}} ;;
     {{/with}}
   {{/each}}
     --) shift; break ;;
@@ -55,11 +58,13 @@ while [ $# -gt 0 ]; do
   shift
 done
 
+{{#if requiredOptions}}
 # required option validation
-if {{#each options}}{{#with this}}{{#if required}}[ -z "$opt_{{long}}" ]{{#unless @last}} || {{/unless}}{{/if}}{{/with}}{{/each}} ; then
+if {{#each requiredOptions}}{{#with this}}[ -z "$opt_{{long}}" ]{{#unless @last}} || {{/unless}}{{/with}}{{/each}} ; then
   usage
   exit 1
 fi
+{{/if}}
 
 # convenience variables
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -69,3 +74,9 @@ __root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point you
 
 
 # this would be a good place to start writing your actual script.
+echo "$__base was called with..."
+{{#each options}}
+  {{#with this}}
+echo -{{short}}, --{{long}}=$opt_{{long}}
+  {{/with}}
+{{/each}}

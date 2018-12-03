@@ -24,7 +24,7 @@
       <tbody>
       <tr v-for="(opt, idx) in options" :key="opt.short">
         <td>
-          <input type="checkbox" v-model="opt.required">
+          <input type="checkbox" v-model="opt.required" :disabled="opt.flag">
         </td>
         <td>
           <input class="input" type="text" v-model="opt.short" size="1" maxlength="1">
@@ -39,7 +39,7 @@
           <input type="checkbox" v-model="opt.flag">
         </td>
         <td>
-          <input class="input" type="text" v-model="opt.def" size="10" maxlength="50">
+          <input class="input" type="text" v-model="opt.def" size="10" maxlength="50" :disabled="opt.flag">
         </td>
         <td>
           <input class="input" type="text" v-model="opt.call" size="10" maxlength="30">
@@ -101,7 +101,7 @@ export default {
   // eslint-disable-next-line
   data: function () {
     return {
-      newOpt: {},
+      newOpt: {}
     };
   },
   computed: {
@@ -112,7 +112,7 @@ export default {
       set(value) {
         this.$emit('descriptionUpdate', value);
       },
-    },
+    }
   },
   methods: {
     removeOption(optIdx) {
