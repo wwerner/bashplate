@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/wwerner/bashplate.svg?style=svg)](https://circleci.com/gh/wwerner/bashplate)
+
 # Bash Plate
 
 Bash Plate generates bash boilerplate code for option parsing and validation.
