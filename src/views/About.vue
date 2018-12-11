@@ -84,9 +84,9 @@
               <li><a href="http://wiki.bash-hackers.org/howto/getopts_tutorial">Getopts Tutorial</a></li>
               <li><a href="http://man7.org/linux/man-pages/man1/getopt.1.html">GNU Getopt</a></li>
               <li><a href="https://argbash.io/">Argbash</a></li>
-              <li>Option parsers for
-              <a href="https://github.com/Kotlin/kotlinx.cli">Kotlin</a>,
-                <a href="https://picocli.info/">Java (♥ this one)</a>, tbc.
+              <li>CLI application framework recommendations: 
+              <a href="https://github.com/Kotlin/kotlinx.cli">kotlinx.cli for Kotlin</a>,
+                <a href="https://picocli.info/">picocli for Java (or Kotlin) ♥</a>, <a href="https://github.com/spf13/cobra/">Cobra (use w/ Viper!) for Golang ♥♥♥</a>.
               </li>
             </ul>
           </div>
