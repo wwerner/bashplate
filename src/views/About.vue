@@ -89,7 +89,8 @@
               <a href="https://github.com/Kotlin/kotlinx.cli">kotlinx.cli for Kotlin</a>,
                 <a href="https://picocli.info/">picocli for Java (or Kotlin) ♥</a>, 
                 <a href="https://github.com/spf13/cobra/">Cobra (use w/ Viper!) for Golang ♥♥♥</a>, 
-                <a href="https://oclif.io/">oclif for Javascript / Node</a>.
+                <a href="https://oclif.io/">oclif for Javascript / Node</a>,
+                <a href="https://github.com/pallets/click/">click for python</a>.
               </li>
             </ul>
           </div>
