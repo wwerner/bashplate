@@ -4,14 +4,14 @@ module.exports = {
       rules: [
         {
           parser: {
-            amd: false
-          }
+            amd: false,
+          },
         },
         {
           test: /\.hbs$/,
-          loader: "handlebars-loader"
-        }
-      ]
-    }
-  }
+          loader: 'handlebars-loader',
+        },
+      ],
+    },
+  },
 };

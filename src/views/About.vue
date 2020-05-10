@@ -85,10 +85,10 @@
               <li><a href="http://man7.org/linux/man-pages/man1/getopt.1.html">GNU Getopt</a></li>
               <li><a href="https://argbash.io/">Argbash</a></li>
               <li><a href="https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46">12 Factor CLI apps</a></li>
-              <li>CLI application framework recommendations: 
+              <li>CLI application framework recommendations:
               <a href="https://github.com/Kotlin/kotlinx.cli">kotlinx.cli for Kotlin</a>,
-                <a href="https://picocli.info/">picocli for Java (or Kotlin) ♥</a>, 
-                <a href="https://github.com/spf13/cobra/">Cobra (use w/ Viper!) for Golang ♥♥♥</a>, 
+                <a href="https://picocli.info/">picocli for Java (or Kotlin) ♥</a>,
+                <a href="https://github.com/spf13/cobra/">Cobra (use w/ Viper!) for Golang ♥♥♥</a>,
                 <a href="https://oclif.io/">oclif for Javascript / Node</a>,
                 <a href="https://github.com/pallets/click/">click for python</a>.
               </li>

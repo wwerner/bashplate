@@ -57,7 +57,7 @@
       </tr>
       </tbody>
     </table>
-    
+
     <a class="button is-primary" @click="addOption(newOpt)">
       <span>Add parameter</span>
       <span class="icon"><i class="fas fa-plus"></i></span>
@@ -73,7 +73,7 @@ export default {
   // eslint-disable-next-line
   data: function () {
     return {
-      newOpt: {}
+      newOpt: {},
     };
   },
   computed: {
@@ -84,7 +84,7 @@ export default {
       set(value) {
         this.$emit('descriptionUpdate', value);
       },
-    }
+    },
   },
   methods: {
     removeOption(optIdx) {
@@ -107,4 +107,3 @@ export default {
 }
 
 </style>
-

@@ -53,17 +53,28 @@ export default {
   },
   computed: {
     script() {
-      return this.templates[this.flavor](this);
+      return this.templates[this.flavor](
+        this,
+        {
+          allowedProtoProperties: {
+            description: true,
+            options: true,
+            flagOptions: true,
+            parameterOptions: true,
+            requiredOptions: true,
+          },
+        },
+      );
     },
     requiredOptions() {
-      return this.options.filter(opt => opt.required)
+      return this.options.filter((opt) => opt.required);
     },
     flagOptions() {
-      return this.options.filter(opt => opt.flag === true)
+      return this.options.filter((opt) => opt.flag === true);
     },
     parameterOptions() {
-      return this.options.filter(opt => opt.flag === false)
-    }
+      return this.options.filter((opt) => opt.flag === false);
+    },
   },
   watch: {
     script() {
@@ -74,7 +85,7 @@ export default {
   },
   methods: {
     save() {
-      const blob = new Blob([this.script], {type: 'text/plain;charset=utf-8'});
+      const blob = new Blob([this.script], { type: 'text/plain;charset=utf-8' });
       FileSaver.saveAs(blob, 'bashplate.sh');
     },
   },
