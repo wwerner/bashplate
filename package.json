@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy": "vue-cli-service build && cd dist && ../node_modules/.bin/now",
-    "report": "vue-cli-service build --report"
+    "report": "vue-cli-service build --report",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "bulma": "^0.7.2",
@@ -36,5 +37,9 @@
     "now": "^11.5.1",
     "prettier": "^1.19.1",
     "vue-template-compiler": "^2.5.17"
+  },
+  "resolutions": {
+    "minimist": "1.2.3",
+    "mkdir": "0.5.3"
   }
 }
