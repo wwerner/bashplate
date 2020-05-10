@@ -11,7 +11,7 @@
           <a href="https://handlebarsjs.com/">handlebars</a>.
         Thanks to
           <a href="https://github.com">Github</a> for VCS,
-          <a href="https://zeit.co">Zeit</a> for hosting,
+          <a href="https://vercel.com">Vercel</a> for hosting,
           <a href="https://circleci.com">CircleCI</a> for CI/CD.
       </div>
     </footer>
