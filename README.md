@@ -1,5 +1,3 @@
-[![CircleCI](https://circleci.com/gh/wwerner/bashplate.svg?style=svg)](https://circleci.com/gh/wwerner/bashplate)
-
 [![setup automated](https://img.shields.io/badge/Gitpod-ready_to_code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
 
 # Bash Plate
