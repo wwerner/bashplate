@@ -11,7 +11,7 @@
     "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
-    "bulma": "^0.9.0",
+    "bulma": "^0.9.1",
     "core-js": "^3.6.4",
     "file-saver": "^2.0.2",
     "handlebars": "^4.7.6",
