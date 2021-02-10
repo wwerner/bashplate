@@ -17,7 +17,7 @@
     "handlebars": "^4.7.6",
     "handlebars-loader": "^1.7.1",
     "prism": "^4.1.2",
-    "prismjs": "^1.22.0",
+    "prismjs": "^1.23.0",
     "vue": "^2.5.17",
     "vue-clipboard2": "^0.3.1",
     "vue-router": "^3.0.1"
