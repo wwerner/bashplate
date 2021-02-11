@@ -20,4 +20,5 @@ yarn-error.log*
 *.sln
 *.sw*
 
-.vercel
+.vercel.cache
+build
