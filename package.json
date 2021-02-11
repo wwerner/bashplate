@@ -9,7 +9,7 @@
   "private": false,
   "scripts": {
     "dev": "parcel src/index.html --out-dir build/debug",
-    "build": "parcel build src/index.html --out-dir build/release --public-url ./"
+    "build": "parcel build src/index.html --out-dir dist --public-url ./"
   },
   "dependencies": {
     "components": "^0.1.0",
