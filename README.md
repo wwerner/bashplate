@@ -4,7 +4,7 @@
 
 Bash Plate generates bash boilerplate code for option parsing and validation.
 
-Currently deployed here: https://bashplate.now.sh/
+Currently deployed here: https://bashplate.wolfgang-werner.net
 
 Why? Each time (long enough to forget all the details after writing the last one) I need to write a shell script:
 * 🧐 "I want this to be reuseable, so I'll use proper options & help messages"
