@@ -13,12 +13,13 @@ import {
 
 import {
     Navigation,
+    Footer
+} from '~components'
+
+import {
     About,
     Generator,
-    Footer
-} from './components'
-
-console.log('Hello from tsx!')
+} from '~views'
 
 const App = () => (
     <div id="app" className="section">

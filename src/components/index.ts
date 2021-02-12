@@ -1,4 +1,4 @@
 export * from "./Navigation";
-export * from "./About";
-export * from "./Generator";
 export * from "./Footer";
+export * from "./Option";
+export * from "./Result";
