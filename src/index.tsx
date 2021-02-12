@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import { Navigation } from './components'
+import "bulma"
 
 console.log('Hello from tsx!')
 
