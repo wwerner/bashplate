@@ -1,4 +1,6 @@
 import * as React from "react";
+import * as prism from 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css';
 
 export const Result = () => (
     <div className="result-script">
@@ -20,7 +22,7 @@ export const Result = () => (
                 <span className="icon"><i className="fa fa-download"></i></span>
             </a>
             
-            <code className="language-bash" v-html="script"></code>
+            <code className="language-bash"></code>
         </pre>
     </div >
 )
