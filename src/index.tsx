@@ -1,13 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+import "bulma"
+
+import "./index.scss"
+
 import {
     BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
 
-import { Navigation } from './components'
-import "bulma"
+import {
+    Navigation,
+    About,
+    Generator
+} from './components'
 
 console.log('Hello from tsx!')
 
@@ -27,21 +35,18 @@ const App = () => (
         <footer className="footer box">
             <div className="content has-text-centered">
                 Bash Plate is standing on the shoulders of giants:
-          <a href="https://reactjs.org/">React.js</a>,
-          <a href="https://bulma.io/">Bulma</a>,
-          <a href="https://prismjs.com/">Prism.js</a>,
-          <a href="https://handlebarsjs.com/">handlebars</a>.
-        Thanks to
-          <a href="https://github.com">Github</a> for VCS,
-          <a href="https://vercel.com">Vercel</a> for hosting,
-          <a href="https://circleci.com">CircleCI</a> for CI/CD.
-      </div>
+                    &nbsp;<a href="https://reactjs.org/">React.js</a>,
+                    &nbsp;<a href="https://bulma.io/">Bulma</a>,
+                    &nbsp;<a href="https://prismjs.com/">Prism.js</a>,
+                    &nbsp;<a href="https://handlebarsjs.com/">handlebars</a>.
+                Thanks to
+                    &nbsp;<a href="https://github.com">Github</a> for VCS,
+                    &nbsp;<a href="https://vercel.com">Vercel</a> for hosting,
+                    &nbsp;<a href="https://circleci.com">CircleCI</a> for CI/CD.
+             </div>
         </footer>
     </div>
 );
-
-const Generator = () => <div>Generator</div>
-const About = () => <div>About</div>
 
 ReactDOM.render(
     <App />,
