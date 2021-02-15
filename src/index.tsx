@@ -25,8 +25,9 @@ const App = () => {
     let test = (opts:any) => console.log(opts)
 
     const [options] = useState(defaultOptions)
+    let template = gnuTemplate
     const [result] = useState({
-        script: posixTemplate({
+        script: template({
             description: "Bashplate Script Description",
             requiredOptions: options.filter(o => o.required),
             flagOptions: options.filter(o => o.isFlag),

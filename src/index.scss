@@ -6,3 +6,19 @@ a.is-active {
     background-color: transparent;
     padding: 0.3rem 0.3rem 0.3rem 0.3rem;
   }
+
+  /* override bulma's numner style as it messes w/ prism's */
+.number {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 0px;
+    display: inline;
+    font-size: 1rem;
+    height: 1em;
+    margin-right: 0rem;
+    min-width: 0rem;
+    padding: 0rem 0rem;
+    vertical-align: middle;
+  }
