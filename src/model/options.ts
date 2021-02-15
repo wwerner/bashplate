@@ -29,11 +29,11 @@ export const defaultOptions : OptionData[] = [
         exitCode: 0
     },
     {
-        required: false,
+        required: true,
         shortName: "t",
         longName: "test",
         description: "Test parameter",
-        isFlag: true,
+        isFlag: false,
         defaultValue: "test content",
     }
 ] 
