@@ -8,9 +8,6 @@ type GeneratorProps = {
 }
 
 export const Generator = ({ options, result }: GeneratorProps) => {
-
-    console.log('options', options)
-    console.log('result', result)
     return (
         <div className="section">
             <h2 className="subtitle">Bash Plate lets you generate boilerplate for shell scripts that takes care of receiving, parsing,

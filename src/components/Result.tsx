@@ -5,7 +5,6 @@ import { ResultData } from '~model'
 
 
 export const Result = ({ script }: ResultData) => {
-    console.log(script)
     return (
     <div className="result-script">
         <div className="tabs">
