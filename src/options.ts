@@ -9,7 +9,7 @@ export interface OptionData {
     exitCode?: number,
 }
 
-export const DefaultOptions : OptionData[] = [
+export const defaultOptions : OptionData[] = [
     {
         required: false,
         shortName: "h",
