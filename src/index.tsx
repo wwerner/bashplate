@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import { defaultOptions } from './options'
+import { defaultOptions } from '~model'
 
 import "bulma"
 
@@ -21,10 +21,10 @@ import {
     About,
     Generator,
 } from '~views'
-import { OptionData } from '~options'
 
 const App = () => {
     const [options] = useState(defaultOptions)
+    const [result] = useState({ script: 'as dflkjalsdk fjaldskfj' })
 
     return (
         <div id="app" className="section">
@@ -35,7 +35,7 @@ const App = () => {
                         <About />
                     </Route>
                     <Route path='/'>
-                        <Generator {...options} />
+                        <Generator options={options} result={result} />
                     </Route>
                 </Switch>
             </Router>

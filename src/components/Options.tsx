@@ -1,5 +1,5 @@
 import * as React from "react";
-import { OptionData } from "~/options"
+import { OptionData } from "~model"
 import { Option } from "~/components"
 
 export const Options = (options: OptionData[]) => (
