@@ -2,17 +2,35 @@ import * as React from "react";
 import { OptionData } from "~model"
 
 export const Option = (data: OptionData) => (
-    <div>
-        <b>Option {data.longName}</b>
-        <ul>
-            <li>required:{data.required}</li>
-            <li>shortName:{data.shortName}</li>
-            <li>longName:{data.longName}</li>
-            <li>description:{data.description}</li>
-            <li>isFlag: {data.isFlag}</li>
-            <li>defaultValue:{data.defaultValue}</li>
-            <li>functionCall:{data.functionCall}</li>
-            <li>exitCode:{data.exitCode}</li>
-        </ul>
-    </div>
+    <tr>
+        <td>
+            <input type="checkbox" />
+        </td>
+        <td>
+            <input className="input" type="text" size={1} maxLength={1} />
+        </td>
+        <td>
+            <input className="input" type="text" size={9} maxLength={25} />
+        </td>
+        <td>
+            <input className="input" type="text" size={25} maxLength={150} />
+        </td>
+        <td>
+            <input type="checkbox" />
+        </td>
+        <td>
+            <input className="input" type="text" size={10} maxLength={50} />
+        </td>
+        <td>
+            <input className="input" type="text" size={10} maxLength={30} />
+        </td>
+        <td>
+            <input className="input" type="number" min={0} step={1} max={255} />
+        </td>
+        <td>
+            <a className="button is-danger is-inverted" >
+                <span className="icon"><i className="fas fa-times"></i></span>
+            </a>
+        </td>
+    </tr >
 )
