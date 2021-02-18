@@ -3,7 +3,7 @@ import { OptionData } from "~model"
 import { Option } from "~/components"
 
 export const Options = (options: OptionData[]) => (
-    <div>
+    <div className="options">
         <table className="table is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
                 <tr>

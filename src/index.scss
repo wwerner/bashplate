@@ -22,3 +22,11 @@ a.is-active {
     padding: 0rem 0rem;
     vertical-align: middle;
   }
+
+  #options {
+    overflow: scroll
+  }
+  ::-webkit-scrollbar {
+    display:none;
+  }
+  
