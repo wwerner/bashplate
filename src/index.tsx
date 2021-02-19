@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import "bulma"
 import "./index.scss"
@@ -22,20 +22,28 @@ import gnuTemplate from '~templates/gnu.hbs';
 import posixTemplate from '~templates/posix.hbs';
 
 const App = () => {
-    let test = (opts: any) => console.log(opts)
-
     const [options, setOptions] = useState(defaultOptions)
     let template = gnuTemplate
-    const [result] = useState({
-        script: template({
-            description: "Bashplate Script Description",
-            requiredOptions: options.filter(o => o.required),
-            flagOptions: options.filter(o => o.isFlag),
-            parameterOptions: options.filter(o => !o.isFlag),
-            options: Object.values(options)
-        }),
 
+    const renderScript = (): string => template({
+        description: "Bashplate Script Description",
+        requiredOptions: options.filter(o => o.required),
+        flagOptions: options.filter(o => o.isFlag),
+        parameterOptions: options.filter(o => !o.isFlag),
+        options: Object.values(options)
     })
+        
+    const [result, setResult] = useState({
+        script: renderScript()
+        })
+
+
+    useEffect(() =>{
+        setResult({
+            ...result,
+            script: renderScript() 
+        })
+    }, [options])
 
 
     //console.log(options)

@@ -7,7 +7,7 @@ export const Result = ({ script }: ResultData) => {
 
     useEffect(() => {
         setTimeout(() => Prism.highlightAll(), 0)
-    }, [])
+    }, [script])
 
 
     return (
