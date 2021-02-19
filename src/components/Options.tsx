@@ -4,11 +4,12 @@ import { Option } from "~/components"
 
 interface OptionsProps {
     options: OptionData[],
-    onRemoveOption: (data: OptionData) => void
-    onAddOption: () => void
+    onAddOption: () => void,
+    onChangeOption: (data: OptionData) => void,
+    onRemoveOption: (data: OptionData) => void,
 }
 
-export const Options = ({ options, onRemoveOption, onAddOption }: OptionsProps) => (
+export const Options = ({ options, onAddOption, onChangeOption, onRemoveOption }: OptionsProps) => (
     <div className="options">
         <table className="table is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
@@ -30,6 +31,7 @@ export const Options = ({ options, onRemoveOption, onAddOption }: OptionsProps) 
                         <Option
                             key={optionData.shortName}
                             data={optionData}
+                            onChange={onChangeOption}
                             onRemove={onRemoveOption}
                         />)
                 }

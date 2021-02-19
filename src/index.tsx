@@ -30,7 +30,7 @@ const App = () => {
         requiredOptions: options.filter(o => o.required),
         flagOptions: options.filter(o => o.isFlag),
         parameterOptions: options.filter(o => !o.isFlag),
-        options: Object.values(options)
+        options
     })
         
     const [result, setResult] = useState({
@@ -46,14 +46,16 @@ const App = () => {
     }, [options])
 
 
-    //console.log(options)
-    //console.log(result)
-
     const onRemoveOption = (data: OptionData) => {
         setOptions(options.filter(o => o.shortName != data.shortName))
     }
     const onAddOption = () => {
         setOptions(options.concat({} as OptionData))
+    }
+
+    const onChangeOption = (data: OptionData) => {
+        console.log(data)
+        setOptions(options.map(o => o.shortName === data.shortName ? data : o))
     }
 
     return (
@@ -68,8 +70,9 @@ const App = () => {
                         <Generator
                             options={options}
                             result={result}
-                            onRemoveOption={onRemoveOption}
                             onAddOption={onAddOption}
+                            onChangeOption={onChangeOption}
+                            onRemoveOption={onRemoveOption}
                         />
                     </Route>
                 </Switch>

@@ -5,19 +5,21 @@ import { OptionData, ResultData } from "~model";
 type GeneratorProps = {
     options: OptionData[],
     result: ResultData,
+    onAddOption: () => void,
+    onChangeOption: (data: OptionData) => void,
     onRemoveOption: (data: OptionData) => void,
-    onAddOption: () => void
 }
 
-export const Generator = ({ options, result, onRemoveOption, onAddOption}: GeneratorProps) => {
+export const Generator = ({ options, result, onAddOption, onChangeOption, onRemoveOption}: GeneratorProps) => {
     return (
         <div className="section">
             <h2 className="subtitle">Bash Plate lets you generate boilerplate for shell scripts that takes care of receiving, parsing,
       validating and documenting script arguments.</h2>
             <Options 
                 options={options} 
-                onRemoveOption={onRemoveOption}
                 onAddOption={onAddOption}
+                onChangeOption={onChangeOption}
+                onRemoveOption={onRemoveOption}
                 />
 
             <Result {...result} />
