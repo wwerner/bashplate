@@ -16,15 +16,15 @@ import {
     Generator,
 } from '~views'
 
-import { defaultOptions } from '~model'
+import { defaultOptions, OptionData } from '~model'
 
 import gnuTemplate from '~templates/gnu.hbs';
 import posixTemplate from '~templates/posix.hbs';
 
 const App = () => {
-    let test = (opts:any) => console.log(opts)
+    let test = (opts: any) => console.log(opts)
 
-    const [options] = useState(defaultOptions)
+    const [options, setOptions] = useState(defaultOptions)
     let template = gnuTemplate
     const [result] = useState({
         script: template({
@@ -41,6 +41,13 @@ const App = () => {
     //console.log(options)
     //console.log(result)
 
+    const onRemoveOption = (data: OptionData) => {
+        setOptions(options.filter(o => o.shortName != data.shortName))
+    }
+    const onAddOption = () => {
+        setOptions(options.concat({} as OptionData))
+    }
+
     return (
         <div id="app" className="section">
             <Router>
@@ -50,7 +57,12 @@ const App = () => {
                         <About />
                     </Route>
                     <Route path='/'>
-                        <Generator options={options} result={result} />
+                        <Generator
+                            options={options}
+                            result={result}
+                            onRemoveOption={onRemoveOption}
+                            onAddOption={onAddOption}
+                        />
                     </Route>
                 </Switch>
             </Router>

@@ -2,7 +2,13 @@ import * as React from "react";
 import { OptionData } from "~model"
 import { Option } from "~/components"
 
-export const Options = (options: OptionData[]) => (
+interface OptionsProps {
+    options: OptionData[],
+    onRemoveOption: (data: OptionData) => void
+    onAddOption: () => void
+}
+
+export const Options = ({ options, onRemoveOption, onAddOption }: OptionsProps) => (
     <div className="options">
         <table className="table is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
@@ -20,15 +26,22 @@ export const Options = (options: OptionData[]) => (
             </thead>
             <tbody>
                 {
-                    Object.values(options).map((optionData) => <Option key={optionData.shortName} {...optionData} />)
+                    Object.values(options).map((optionData) =>
+                        <Option
+                            key={optionData.shortName}
+                            data={optionData}
+                            onRemove={onRemoveOption}
+                        />)
                 }
-
+                <tr>
+                    <td colSpan={9}>
+                        <a className="button is-primary" onClick={() => onAddOption()}>
+                            <span>Add parameter</span>
+                            <span className="icon"><i className="fas fa-plus"></i></span>
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
-
-        <a className="button is-primary">
-            <span>Add parameter</span>
-            <span className="icon"><i className="fas fa-plus"></i></span>
-        </a>
     </div>
 )
