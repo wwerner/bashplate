@@ -1,4 +1,5 @@
 export interface OptionData {
+    id: number,
     required: boolean,
     shortName: string,
     longName: string,
@@ -9,8 +10,9 @@ export interface OptionData {
     exitCode?: number,
 }
 
-export const defaultOptions : OptionData[] = [
+export const defaultOptions: OptionData[] = [
     {
+        id: 0,
         required: false,
         shortName: "h",
         longName: "help",
@@ -20,6 +22,7 @@ export const defaultOptions : OptionData[] = [
         exitCode: 0
     },
     {
+        id: 1,
         required: false,
         shortName: "v",
         longName: "version",
@@ -29,6 +32,7 @@ export const defaultOptions : OptionData[] = [
         exitCode: 0
     },
     {
+        id: 2,
         required: true,
         shortName: "t",
         longName: "test",
@@ -36,4 +40,4 @@ export const defaultOptions : OptionData[] = [
         isFlag: false,
         defaultValue: "test content",
     }
-] 
+]

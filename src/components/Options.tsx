@@ -27,10 +27,10 @@ export const Options = ({ options, onAddOption, onChangeOption, onRemoveOption }
             </thead>
             <tbody>
                 {
-                    Object.values(options).map((optionData) =>
+                    options.map((option) =>
                         <Option
-                            key={optionData.shortName}
-                            data={optionData}
+                            key={option.id}
+                            data={option}
                             onChange={onChangeOption}
                             onRemove={onRemoveOption}
                         />)

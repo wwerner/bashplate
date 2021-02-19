@@ -6,8 +6,8 @@ type GeneratorProps = {
     options: OptionData[],
     result: ResultData,
     onAddOption: () => void,
-    onChangeOption: (data: OptionData) => void,
-    onRemoveOption: (data: OptionData) => void,
+    onChangeOption: (option: OptionData) => void,
+    onRemoveOption: (option: OptionData) => void,
 }
 
 export const Generator = ({ options, result, onAddOption, onChangeOption, onRemoveOption}: GeneratorProps) => {

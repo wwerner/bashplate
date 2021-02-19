@@ -32,31 +32,28 @@ const App = () => {
         parameterOptions: options.filter(o => !o.isFlag),
         options
     })
-        
+
     const [result, setResult] = useState({
         script: renderScript()
-        })
+    })
 
 
-    useEffect(() =>{
+    useEffect(() => {
         setResult({
             ...result,
-            script: renderScript() 
+            script: renderScript()
         })
     }, [options])
 
 
-    const onRemoveOption = (data: OptionData) => {
-        setOptions(options.filter(o => o.shortName != data.shortName))
-    }
-    const onAddOption = () => {
-        setOptions(options.concat({} as OptionData))
-    }
+    const onRemoveOption =
+        (option: OptionData) => setOptions(options.filter(o => o.id !== option.id))
 
-    const onChangeOption = (data: OptionData) => {
-        console.log(data)
-        setOptions(options.map(o => o.shortName === data.shortName ? data : o))
-    }
+    const onAddOption =
+        () => setOptions(options.concat({ id: options.length } as OptionData))
+
+    const onChangeOption =
+        (data: OptionData) => setOptions(options.map((o) => o.id === data.id ? data : o))
 
     return (
         <div id="app" className="section">
