@@ -11,9 +11,13 @@ export const Result = ({ script }: ResultData) => {
     }, [script])
 
     const save = () => {
-        const blob = new Blob([script], { type: 'text/plain;charset=utf-8' });
-        FileSaver.saveAs(blob, 'bashplate.sh');
-      }
+        const blob = new Blob([script], { type: 'text/plain;charset=utf-8' })
+        FileSaver.saveAs(blob, 'bashplate.sh')
+    }
+
+    const copy = () => {
+        navigator.clipboard.writeText(script)
+    }
 
     return (
         <div className="result-script">
@@ -26,13 +30,13 @@ export const Result = ({ script }: ResultData) => {
 
             <pre>
                 <a className="button is-outlined is-link is-inverted is-pulled-right"
-                    style={{ marginLeft: "1vh" }}>
+                    style={{ marginLeft: "1vh" }}
+                    onClick={copy}
+                >
                     <span>Copy&nbsp;</span>
                     <span className="icon"><i className="fa fa-copy"></i></span>
                 </a>
-                <a className="button is-outlined is-link is-inverted is-pulled-right"
-                    onClick={save}
-                >
+                <a className="button is-outlined is-link is-inverted is-pulled-right" onClick={save} >
                     <span>Download&nbsp;</span>
                     <span className="icon"><i className="fa fa-download"></i></span>
                 </a>
