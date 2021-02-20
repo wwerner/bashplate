@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import Prism from 'prismjs'
 import { ResultData } from '~model'
+import FileSaver from 'file-saver';
 
 
 export const Result = ({ script }: ResultData) => {
@@ -9,6 +10,10 @@ export const Result = ({ script }: ResultData) => {
         setTimeout(() => Prism.highlightAll(), 0)
     }, [script])
 
+    const save = () => {
+        const blob = new Blob([script], { type: 'text/plain;charset=utf-8' });
+        FileSaver.saveAs(blob, 'bashplate.sh');
+      }
 
     return (
         <div className="result-script">
@@ -25,7 +30,9 @@ export const Result = ({ script }: ResultData) => {
                     <span>Copy&nbsp;</span>
                     <span className="icon"><i className="fa fa-copy"></i></span>
                 </a>
-                <a className="button is-outlined is-link is-inverted is-pulled-right">
+                <a className="button is-outlined is-link is-inverted is-pulled-right"
+                    onClick={save}
+                >
                     <span>Download&nbsp;</span>
                     <span className="icon"><i className="fa fa-download"></i></span>
                 </a>
