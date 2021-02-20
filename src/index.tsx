@@ -16,34 +16,31 @@ import {
     Generator,
 } from '~views'
 
-import { defaultOptions, OptionData } from '~model'
-
-import gnuTemplate from '~templates/gnu.hbs';
-import posixTemplate from '~templates/posix.hbs';
+import { defaultOptions, OptionData, Dialects, templates } from '~model'
 
 const App = () => {
     const [options, setOptions] = useState(defaultOptions)
-    let template = gnuTemplate
+    const [dialect, setDialect] = useState(Dialects.posix)
 
-    const renderScript = (): string => template({
+    const renderScript = (dialect: Dialects): string => templates[dialect]({
         description: "Bashplate Script Description",
         requiredOptions: options.filter(o => o.required),
         flagOptions: options.filter(o => o.isFlag),
         parameterOptions: options.filter(o => !o.isFlag),
         options
     })
-
+    
     const [result, setResult] = useState({
-        script: renderScript()
+        script: renderScript(dialect),
+        dialect: dialect
     })
-
 
     useEffect(() => {
         setResult({
-            ...result,
-            script: renderScript()
+            script: renderScript(dialect),
+            dialect: dialect
         })
-    }, [options])
+    }, [options, dialect])
 
 
     const onRemoveOption =
@@ -54,6 +51,9 @@ const App = () => {
 
     const onChangeOption =
         (data: OptionData) => setOptions(options.map((o) => o.id === data.id ? data : o))
+
+    const onChangeDialect =
+        (dialect: Dialects) => setDialect(dialect)
 
     return (
         <div id="app" className="section">
@@ -70,6 +70,7 @@ const App = () => {
                             onAddOption={onAddOption}
                             onChangeOption={onChangeOption}
                             onRemoveOption={onRemoveOption}
+                            onChangeDialect={onChangeDialect}
                         />
                     </Route>
                 </Switch>

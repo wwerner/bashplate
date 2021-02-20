@@ -8,9 +8,10 @@ type GeneratorProps = {
     onAddOption: () => void,
     onChangeOption: (option: OptionData) => void,
     onRemoveOption: (option: OptionData) => void,
+    onChangeDialect: any
 }
 
-export const Generator = ({ options, result, onAddOption, onChangeOption, onRemoveOption}: GeneratorProps) => {
+export const Generator = ({ options, result, onAddOption, onChangeOption, onRemoveOption, onChangeDialect}: GeneratorProps) => {
     return (
         <div className="section">
             <h2 className="subtitle">Bash Plate lets you generate boilerplate for shell scripts that takes care of receiving, parsing,
@@ -22,7 +23,7 @@ export const Generator = ({ options, result, onAddOption, onChangeOption, onRemo
                 onRemoveOption={onRemoveOption}
                 />
 
-            <Result {...result} />
+            <Result result={result} onChangeDialect={onChangeDialect}/>
         </div>
     )
 }

@@ -1,3 +1,4 @@
 export interface ResultData {
-    script: string
+    script: string,
+    dialect: any
 }
