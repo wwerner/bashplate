@@ -25,7 +25,7 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
 
     return (
         <div className="result-script">
-            <div className="tabs">
+            <div className="tabs" style={{marginBottom: "-0.3em"}}>
                 <ul>
                     <li><a
                         className={result.dialect === Dialects.posix ? 'is-active' : ''}
