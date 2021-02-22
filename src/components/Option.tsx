@@ -8,14 +8,25 @@ interface OptionProps {
 }
 
 export const Option = ({ data: option, onChange, onRemove }: OptionProps) => {
-    const updatedOption = (key: string, value: boolean | string | number) =>
-        ({ ...option, [key]: value })
+    const updatedOptions = (src: OptionData, updates: {[key: string]: boolean | string | number}) =>
+        ({ ...src, ...updates })
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.currentTarget.type === 'checkbox'
             ? e.currentTarget.checked
-            : e.currentTarget.value;
-        onChange(updatedOption(e.currentTarget.name, value))
+            : e.currentTarget.value
+        const field = e.currentTarget.name
+
+        switch (field) {
+            case 'isFlag':
+                onChange(updatedOptions(option, {
+                    [field]: value,
+                    required : false,
+                }))
+                break
+            default:
+                onChange(updatedOptions(option, {[field]: value}))
+        }
     }
 
     const handleRemove = () => onRemove(option)
@@ -23,7 +34,7 @@ export const Option = ({ data: option, onChange, onRemove }: OptionProps) => {
     return (
         <tr>
             <td>
-                <input type="checkbox" name='required' defaultChecked={option.required} onChange={handleChange} />
+                <input type="checkbox" name='required' checked={option.required} onChange={handleChange} disabled={option.isFlag}/>
             </td>
             <td>
                 <input className="input" name='shortName' defaultValue={option.shortName} onChange={handleChange} type="text" size={1} maxLength={1} />
