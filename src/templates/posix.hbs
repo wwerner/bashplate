@@ -40,13 +40,22 @@ opt_{{longName}}="{{defaultValue}}"
   {{/with}}
 {{/each}}
 
+# declared functions
+{{#each callingOptions}}
+  {{#with this}}
+{{functionCall}}() {
+  printf "Called {{functionCall}}{{#if defaultValue}} with value $opt_{{longName}}{{/if}}\n" 
+}
+  {{/with}}
+{{/each}}
+
 # option parsing
 OPTSPEC=:{{#each options}}{{#with this}}{{shortName}}{{#unless isFlag}}:{{/unless}}{{/with}}{{/each}}
 while getopts $OPTSPEC option; do
   case "$option" in
   {{#each options}}
     {{#with this}}
-    {{shortName}} ) {{#if call}}{{call}}; {{/if}}{{#unless isFlag}}opt_{{longName}}=$OPTARG; {{else}}opt_{{longName}}="true"; {{/unless}}{{#if exitCode}}exit {{exitCode}} {{/if}} ;;
+    {{shortName}} ) {{#unless isFlag}}opt_{{longName}}=$OPTARG; {{else}}opt_{{longName}}="true"; {{/unless}}{{#if functionCall}}{{functionCall}}; {{/if}}{{#if exitCode}}exit {{exitCode}} {{/if}} ;;
     {{/with}}
   {{/each}}
    \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;

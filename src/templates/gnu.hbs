@@ -40,6 +40,15 @@ version() {
   {{/with}}
 {{/each}}
 
+# declared functions
+{{#each callingOptions}}
+  {{#with this}}
+{{functionCall}}() {
+  printf "Called {{functionCall}}{{#if defaultValue}} with value $opt_{{longName}}{{/if}}\n" 
+}
+  {{/with}}
+{{/each}}
+
 # option parsing
 OPTSPEC=:{{#each options}}{{#with this}}{{shortName}}{{#unless isFlag}}:{{/unless}}{{/with}}{{/each}}
 OPTSPEC_LONG={{#each options}}{{#with this}}{{longName}}{{#unless isFlag}}:{{/unless}}{{/with}}{{#unless @last}},{{/unless}}{{/each}}

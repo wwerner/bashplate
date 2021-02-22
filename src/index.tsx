@@ -27,11 +27,12 @@ const App = () => {
         requiredOptions: options.filter(o => o.required),
         flagOptions: options.filter(o => o.isFlag),
         parameterOptions: options.filter(o => !o.isFlag),
+        callingOptions: options.filter(o => o.functionCall && o.functionCall !== 'usage' && o.functionCall !== 'version'),
         options: options.map(o => (
             {
                 ...o,
                 // trick handlebars into rendering 0 as exit code. 0 is false for #if, "0" isn't
-                exitCode: String(o.exitCode)
+                exitCode: o.exitCode === 0 ? "0" : o.exitCode
             }))
     })
 
