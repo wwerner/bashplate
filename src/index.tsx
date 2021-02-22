@@ -53,7 +53,7 @@ const App = () => {
         (option: OptionData) => setOptions(options.filter(o => o.id !== option.id))
 
     const onAddOption =
-        () => setOptions(options.concat({ id: options.length } as OptionData))
+        () => setOptions(options.concat({ id: options[options.length-1].id + 1 } as OptionData))
 
     const onChangeOption =
         (data: OptionData) => setOptions(options.map((o) => o.id === data.id ? data : o))
