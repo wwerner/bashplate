@@ -22,6 +22,7 @@ export const Option = ({ data: option, onChange, onRemove }: OptionProps) => {
                 onChange(updatedOptions(option, {
                     [field]: value,
                     required : false,
+                    defaultValue: value ? '' : option.defaultValue as string
                 }))
                 break
             default:
@@ -49,7 +50,7 @@ export const Option = ({ data: option, onChange, onRemove }: OptionProps) => {
                 <input type="checkbox" name='isFlag' defaultChecked={option.isFlag} onChange={handleChange} />
             </td>
             <td>
-                <input className="input" name='defaultValue' defaultValue={option.defaultValue} onChange={handleChange} type="text" size={10} maxLength={50} />
+                <input className="input" name='defaultValue' value={option.defaultValue} onChange={handleChange} disabled={option.isFlag} type="text" size={10} maxLength={50} />
             </td>
             <td>
                 <input className="input" name='functionCall' defaultValue={option.functionCall} onChange={handleChange} type="text" size={10} maxLength={30} />
