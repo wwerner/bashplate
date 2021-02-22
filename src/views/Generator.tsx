@@ -5,9 +5,9 @@ import { OptionData, ResultData } from "~model";
 type GeneratorProps = {
   options: OptionData[];
   result: ResultData;
-     onAddOption: () => void;
-onChangeOption: (option: OptionData) => void;
-            onRemoveOption: (option: OptionData) => void;
+onAddOption: () => void;
+    onChangeOption: (option: OptionData) => void;
+  onRemoveOption: (option: OptionData) => void;
   onChangeDialect: any;
 };
 
