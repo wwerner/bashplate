@@ -27,9 +27,14 @@ const App = () => {
         requiredOptions: options.filter(o => o.required),
         flagOptions: options.filter(o => o.isFlag),
         parameterOptions: options.filter(o => !o.isFlag),
-        options
+        options: options.map(o => (
+            {
+                ...o,
+                // trick handlebars into rendering 0 as exit code. 0 is false for #if, "0" isn't
+                exitCode: String(o.exitCode)
+            }))
     })
-    
+
     const [result, setResult] = useState({
         script: renderScript(dialect),
         dialect: dialect
