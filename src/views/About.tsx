@@ -1,13 +1,16 @@
-<template>
-  <div class="about section">
-    <div class="tile is-ancestor">
+import * as React from "react";
+import { NavLink } from "react-router-dom";
 
-      <div class="tile is-vertical">
-        <div class="tile is-parent">
+export const About = () => (
+    <div className="about section">
+    <div className="tile is-ancestor">
 
-          <div class="tile is-child box is-4">
-            <p class="title">What</p>
-            <p class="subtitle">... is this thing for?</p>
+      <div className="tile is-vertical">
+        <div className="tile is-parent">
+
+          <div className="tile is-child box is-4">
+            <p className="title">What</p>
+            <p className="subtitle">... is this thing for?</p>
             Bash Plate lets you generate boilerplate for shell scripts
             that takes care of receiving, parsing, validating and documenting
             script arguments.<br/>
@@ -21,13 +24,13 @@
             It kinda works on a reasonable recent phone in landscape mode, but if you want to
             generate shell scripts on your mobile on the go, you should really have you checked out.
             <br/><br/>
-            <router-link to="/" class=" is-primary button">Go generate!</router-link>
-            <p class="is-pulled-right">Written by <a href="https://wolfgang-werner.net">this human</a>.</p>
+            <NavLink to="/" className="is-primary button">Go generate!</NavLink>
+            <p className="is-pulled-right">Written by <a href="https://wolfgang-werner.net">this human</a>.</p>
           </div>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- this is probably not how you do it ... -->
-          <div class="tile is-child box">
-            <p class="title">Why</p>
-            <p class="subtitle">... does it even exist?</p>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <div className="tile is-child box">
+            <p className="title">Why</p>
+            <p className="subtitle">... does it even exist?</p>
 
             Each time I need to write a shell script
             - which is <em>exactly</em> long enough to forget all the details after writing the last one -
@@ -66,10 +69,10 @@
 
         </div>
 
-        <div class="tile is-parent">
-          <div class="tile is-child box">
-            <p class="title">More</p>
-            <p class="subtitle">Some useful references, alternatives and background.</p>
+        <div className="tile is-parent">
+          <div className="tile is-child box">
+            <p className="title">More</p>
+            <p className="subtitle">Some useful references, alternatives and background.</p>
             <ul>
               <li><a href="http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html">
                 POSIX style options standard</a></li>
@@ -101,4 +104,4 @@
 
     </div>
   </div>
-</template>
+)

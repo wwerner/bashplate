@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Like this script? Generate boilerplate for similar ones at https://bashplate.now.sh.
+# Like this script? 
+# Generate boilerplate for similar ones at https://bashplate.wolfgang-werner.net.
 
 set -o errexit  # exit on error
 set -o nounset  # don't allow unset variables
@@ -11,14 +12,14 @@ usage() {
   printf "Usage: $(basename "$0") "
   {{#each options}}
     {{#with this}}
-  printf -- "{{#unless required}}[{{/unless}}-{{short}}{{#if long}}, --{{long}}{{/if}}{{#unless flag}}=< {{long}} >{{/unless}}{{#unless required}}]{{/unless}} "
+  printf -- "{{#unless required}}[{{/unless}}-{{shortName}}{{#if longName}}, --{{longName}}{{/if}}{{#unless isFlag}}=< {{longName}} >{{/unless}}{{#unless required}}]{{/unless}} "
     {{/with}}
   {{/each}}
   printf "\n"
 
   {{#each options}}
     {{#with this}}
-  printf "  -%s{{#if long}}, --%s{{/if}}\t%s%s\n" "{{short}}" "{{long}}" "{{description}}" "{{#if def}} (default: {{def}}){{/if}}"
+  printf "  -%s{{#if longName}}, --%s{{/if}}\t%s%s\n" "{{shortName}}" "{{longName}}" "{{description}}" "{{#if defaultValue}} (default: {{defaultValue}}){{/if}}"
     {{/with}}
   {{/each}}
 }
@@ -30,18 +31,18 @@ version() {
 # default values
 {{#each flagOptions}}
   {{#with this}}
-    opt_{{long}}="false"
+    opt_{{longName}}="false"
   {{/with}}
 {{/each}}
 {{#each parameterOptions}}
   {{#with this}}
-    opt_{{long}}="{{def}}"
+    opt_{{longName}}="{{defaultValue}}"
   {{/with}}
 {{/each}}
 
 # option parsing
-OPTSPEC=:{{#each options}}{{#with this}}{{short}}{{#unless flag}}:{{/unless}}{{/with}}{{/each}}
-OPTSPEC_LONG={{#each options}}{{#with this}}{{long}}{{#unless flag}}:{{/unless}}{{/with}}{{#unless @last}},{{/unless}}{{/each}}
+OPTSPEC=:{{#each options}}{{#with this}}{{shortName}}{{#unless isFlag}}:{{/unless}}{{/with}}{{/each}}
+OPTSPEC_LONG={{#each options}}{{#with this}}{{longName}}{{#unless isFlag}}:{{/unless}}{{/with}}{{#unless @last}},{{/unless}}{{/each}}
 
 SCRIPT=`basename $0`
 OPTS=`getopt --name "$SCRIPT" --options $OPTSPEC --long $OPTSPEC_LONG -- "$@"`
@@ -50,7 +51,7 @@ while [ $# -gt 0 ]; do
   case "$1" in
   {{#each options}}
     {{#with this}}
-    -{{short}} {{#if long}}| --{{long}}{{/if}}) {{#if call}}{{call}}; {{/if}}{{#unless flag}}opt_{{long}}=$2; shift; {{else}}opt_{{long}}="true"; {{/unless}} {{#if exit}}exit {{exit}} {{/if}} ;;
+    -{{shortName}} {{#if longName}}| --{{longName}}{{/if}}) {{#if functionCall}}{{functionCall}}; {{/if}}{{#unless isFlag}}opt_{{longName}}=$2; shift; {{else}}opt_{{longName}}="true"; {{/unless}} {{#if exitCode}}exit {{exitCode}} {{/if}} ;;
     {{/with}}
   {{/each}}
     --) shift; break ;;
@@ -61,7 +62,7 @@ done
 
 {{#if requiredOptions}}
 # required option validation
-if {{#each requiredOptions}}{{#with this}}[ -z "$opt_{{long}}" ]{{#unless @last}} || {{/unless}}{{/with}}{{/each}} ; then
+if {{#each requiredOptions}}{{#with this}}[ -z "$opt_{{longName}}" ]{{#unless @last}} || {{/unless}}{{/with}}{{/each}} ; then
   usage
   exit 1
 fi
@@ -78,6 +79,6 @@ __root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point you
 echo "$__base was called with..."
 {{#each options}}
   {{#with this}}
-echo -{{short}}, --{{long}}=$opt_{{long}}
+echo -{{shortName}}, --{{longName}}=$opt_{{longName}}
   {{/with}}
 {{/each}}
