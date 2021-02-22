@@ -32,9 +32,8 @@ If you can relate, give it a spin.
 
 Contributions welcome.
 
-* `npm install` - Project setup
-* `npm run serve` - Compiles and hot-reloads for development
-* `npm run build` - Compiles and minifies for production
-* `npm run test` - Run your tests
-* `npm run lint` - Lints and fixes files
-* `npm run deploy` - Deploys to Zeit at https://bashplate.now.sh.
+* `yarn install` - Project setup
+* `yarn dev` - Compiles and hot-reloads for development
+* `yarn build` - Compiles and minifies for production
+
+Pushing to master deploys to https://bashplate.wolfgang-werner.net and https://bashplate.now.sh (until vercel decides to turn off now.sh).
