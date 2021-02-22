@@ -35,5 +35,6 @@ Contributions welcome.
 * `yarn install` - Project setup
 * `yarn dev` - Compiles and hot-reloads for development
 * `yarn build` - Compiles and minifies for production
+* `yarn lint` - Lints code style issues (& fixes them where possible)
 
 Pushing to master deploys to https://bashplate.wolfgang-werner.net and https://bashplate.now.sh (until vercel decides to turn off now.sh).
