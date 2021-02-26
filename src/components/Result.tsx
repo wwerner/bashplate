@@ -47,7 +47,7 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
         </ul>
       </div>
 
-      <pre>
+      <pre style={{height: "55vh", overflowY: "scroll"}}>
         <a
           className="button is-outlined is-link is-inverted is-pulled-right"
           style={{ marginLeft: "1vh" }}
