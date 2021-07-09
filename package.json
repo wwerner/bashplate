@@ -13,7 +13,7 @@
     "lint": "eslint 'src/**/*.{js,ts,tsx}' --fix"
   },
   "dependencies": {
-    "bulma": "^0.9.2",
+    "bulma": "^0.9.3",
     "components": "^0.1.0",
     "file-saver": "^2.0.5",
     "prismjs": "^1.24.0",
