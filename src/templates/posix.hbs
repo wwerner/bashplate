@@ -84,7 +84,7 @@ __root="$(cd "$(dirname "${__dir}")" && pwd)" # update this to make it point you
 echo "$__base was called with..."
 {{#each options}}
   {{#with this}}
-echo -{{shortName}}, --{{longName}}=$opt_{{longName}}
+echo -{{shortName}}=$opt_{{longName}}
   {{/with}}
 {{/each}}
 
