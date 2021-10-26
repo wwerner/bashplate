@@ -47,7 +47,6 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
             body: {
               files: {
                 [`bashplate-${Date.now()}.sh`]: result.script,
-                },
               },
             },
           })
