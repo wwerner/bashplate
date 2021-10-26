@@ -24,6 +24,10 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
     navigator.clipboard.writeText(result.script);
   };
 
+  const createGist = () => {
+    console.log("gist");
+  };
+
   return (
     <div className="result-script">
       <div className="tabs" style={{ marginBottom: "-0.3em" }}>
@@ -47,10 +51,9 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
         </ul>
       </div>
 
-      <pre style={{height: "55vh", overflowY: "scroll"}}>
+      <pre style={{ height: "55vh", overflowY: "scroll" }}>
         <a
-          className="button is-outlined is-link is-inverted is-pulled-right"
-          style={{ marginLeft: "1vh" }}
+          className="button is-outlined is-link is-inverted is-pulled-right source-action-button"
           onClick={copy}
         >
           <span>Copy&nbsp;</span>
@@ -59,12 +62,21 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
           </span>
         </a>
         <a
-          className="button is-outlined is-link is-inverted is-pulled-right"
+          className="button is-outlined is-link is-inverted is-pulled-right source-action-button"
           onClick={save}
         >
           <span>Download&nbsp;</span>
           <span className="icon">
             <i className="fa fa-download"></i>
+          </span>
+        </a>
+        <a
+          className="button is-outlined is-link is-inverted is-pulled-right source-action-button"
+          onClick={createGist}
+        >
+          <span>Create Gist&nbsp;</span>
+          <span className="icon">
+            <i className="fab fa-github"></i>
           </span>
         </a>
 
