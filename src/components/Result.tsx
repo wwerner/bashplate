@@ -46,8 +46,7 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
           .post("/gists", {
             body: {
               files: {
-                [`bashplate-${Date.now()}.sh`]: {
-                  content: result.script,
+                [`bashplate-${Date.now()}.sh`]: result.script,
                 },
               },
             },
