@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Prism from "prismjs";
 import { ResultData, Dialects } from "~model";
 import FileSaver from "file-saver";
+import Pizzly from "pizzly-js";
 
 interface ResultProps {
   result: ResultData;
@@ -24,8 +25,36 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
     navigator.clipboard.writeText(result.script);
   };
 
+  // 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
+  // https://bashplate-oauth.herokuapp.com/auth/callback
+
   const createGist = () => {
-    console.log("gist");
+    const pizzly = new Pizzly({
+      host: "https://bashplate-oauth.herokuapp.com/",
+      publishableKey: "poUDkGprMhTt87VZbttW",
+    });
+
+    const github = pizzly.integration("github", {
+      setupId: "8598bdac-750d-49aa-9ebf-2208bb6810db",
+    });
+
+    github
+      .connect()
+      .then(({ authId }) => {
+        github
+          .auth(authId)
+          .post("/gists", {
+            body: {
+              files: {
+                [`bashplate-${Date.now()}.sh`]: {
+                  content: result.script,
+                },
+              },
+            },
+          })
+          .then((res) => console.log(res));
+      })
+      .catch(console.error);
   };
 
   return (
