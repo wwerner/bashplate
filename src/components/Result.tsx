@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Prism from "prismjs";
 import { ResultData, Dialects } from "~model";
 import FileSaver from "file-saver";
@@ -25,9 +25,6 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
     navigator.clipboard.writeText(result.script);
   };
 
-  // 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
-  // https://bashplate-oauth.herokuapp.com/auth/callback
-
   const createGist = () => {
     const pizzly = new Pizzly({
       host: "https://bashplate-oauth.herokuapp.com/",
@@ -35,21 +32,27 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
     });
 
     const github = pizzly.integration("github", {
-      setupId: "8598bdac-750d-49aa-9ebf-2208bb6810db",
+      setupId: "329a658d-d273-4ce0-aa0e-dadf444930bf",
     });
 
     github
       .connect()
       .then(({ authId }) => {
+        const filename = `bashplate-${Date.now()}.sh`;
+        console.log(authId, filename);
+
+        const body = {
+          description: "Generated using Bashplate",
+          files: {
+            "foo.txt": {
+              content: "foo content 2",
+            },
+            //[filename]: result.script,
+          },
+        };
         github
           .auth(authId)
-          .post("/gists", {
-            body: {
-              files: {
-                [`bashplate-${Date.now()}.sh`]: result.script,
-              },
-            },
-          })
+          .post("/gists", { body })
           .then((res) => console.log(res));
       })
       .catch(console.error);
