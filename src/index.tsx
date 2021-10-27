@@ -22,6 +22,9 @@ const App = () => {
   const [scriptDescription, setScriptDescription] = useState(
     defaultScriptDescription
   );
+  const [gist, setGist] = useState({});
+  const [gistSuccessModalVisible, setGistSuccessModalVisible] = useState(false);
+  const [gistErrorModalVisible, setGistErrorModalVisible] = useState(false);
 
   const renderScript = (dialect: Dialects): string =>
     templates[dialect]({
@@ -110,15 +113,106 @@ const App = () => {
           body: JSON.stringify(body),
         });
       })
-      .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch(console.error);
+      .then(async (res) => {
+        const body = await res.json();
+        if (!res.ok) {
+          throw new Error(body.message);
+        }
+        return body;
+      })
+      .then((json) => {
+        setGist(json);
+        setGistSuccessModalVisible(true);
+      })
+      .catch((err) => {
+        setGist(err);
+        setGistErrorModalVisible(true);
+      });
+  };
+
+  const handleCloseGistDialog = () => {
+    setGistErrorModalVisible(false);
+    setGistSuccessModalVisible(false);
+    setGist({});
   };
 
   return (
     <div id="app" className="section">
       <Router>
         <Navigation />
+        {/* TODO: Success Modal should go into new FeedbackModal component */}
+        <div className={gistSuccessModalVisible ? "modal is-active" : "modal"}>
+          <div
+            className="modal-background"
+            onClick={handleCloseGistDialog}
+          ></div>
+          <div className="modal-content">
+            <div className="box">
+              <div className="media">
+                <div className="media-left">
+                  <i className="fab fa-4x fa-github has-text-success"></i>
+                </div>
+                <div className="media-content">
+                  <div className="content">
+                    <p>
+                      Yay! Your script has been published{" "}
+                      <a
+                        href={
+                          // @ts-expect-error: Don't want to include GH API types now
+                          gist.html_url
+                        }
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        in your Gists
+                      </a>
+                      .
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            className="modal-close is-large"
+            aria-label="close"
+            onClick={handleCloseGistDialog}
+          ></button>
+        </div>
+
+        {/* TODO: Error Modal should go into new FeedbackModal component */}
+        <div className={gistErrorModalVisible ? "modal is-active" : "modal"}>
+          <div
+            className="modal-background"
+            onClick={handleCloseGistDialog}
+          ></div>
+          <div className="modal-content">
+            <div className="box">
+              <div className="media">
+                <div className="media-left">
+                  <i className="fab fa-4x fa-github has-text-danger"></i>
+                </div>
+                <div className="media-content">
+                  <div className="content">
+                    <p>Meh. That did not work.</p>
+                    <pre>
+                      {
+                        // @ts-expect-error: Don't want to include GH API types now
+                        gist.message
+                      }
+                    </pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            className="modal-close is-large"
+            aria-label="close"
+            onClick={handleCloseGistDialog}
+          ></button>
+        </div>
+
         <Switch>
           <Route path="/about">
             <About />
