@@ -1,64 +1,25 @@
 import React, { useEffect } from "react";
 import Prism from "prismjs";
 import { ResultData, Dialects } from "~model";
-import FileSaver from "file-saver";
-import Pizzly from "pizzly-js";
 
 interface ResultProps {
   result: ResultData;
   onChangeDialect: any;
+  onCopy: () => void;
+  onSave: () => void;
+  onCreateGist: () => void;
 }
 
-export const Result = ({ result, onChangeDialect }: ResultProps) => {
+export const Result = ({
+  result,
+  onChangeDialect,
+  onCopy,
+  onSave,
+  onCreateGist,
+}: ResultProps) => {
   useEffect(() => {
     setTimeout(() => Prism.highlightAll(), 0);
   }, [result.script]);
-
-  const save = () => {
-    const blob = new Blob([result.script], {
-      type: "text/plain;charset=utf-8",
-    });
-    FileSaver.saveAs(blob, "bashplate.sh");
-  };
-
-  const copy = () => {
-    navigator.clipboard.writeText(result.script);
-  };
-
-  const createGist = () => {
-    const pizzly = new Pizzly({
-      host: "https://bashplate-oauth.herokuapp.com/",
-      publishableKey: "poUDkGprMhTt87VZbttW",
-    });
-
-    const github = pizzly.integration("github", {
-      setupId: "329a658d-d273-4ce0-aa0e-dadf444930bf",
-    });
-
-    github
-      .connect()
-      .then(({ authId }) => {
-        const filename = `bashplate-${Date.now()}.sh`;
-        console.log(authId, filename);
-
-        const body = {
-          description: "Generated using bashplate.",
-          public: true,
-          files: {
-            [filename]: {
-              content: result.script,
-            },
-          },
-        };
-
-        return github.auth(authId).post("/gists", {
-          body: JSON.stringify(body),
-        });
-      })
-      .then((res) => res.json())
-      .then((json) => console.log(json))
-      .catch(console.error);
-  };
 
   return (
     <div className="result-script">
@@ -86,7 +47,7 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
       <pre style={{ height: "55vh", overflowY: "scroll" }}>
         <a
           className="button is-outlined is-link is-inverted is-pulled-right source-action-button"
-          onClick={copy}
+          onClick={onCopy}
         >
           <span>Copy&nbsp;</span>
           <span className="icon">
@@ -95,7 +56,7 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
         </a>
         <a
           className="button is-outlined is-link is-inverted is-pulled-right source-action-button"
-          onClick={save}
+          onClick={onSave}
         >
           <span>Download&nbsp;</span>
           <span className="icon">
@@ -104,7 +65,7 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
         </a>
         <a
           className="button is-outlined is-link is-inverted is-pulled-right source-action-button"
-          onClick={createGist}
+          onClick={onCreateGist}
         >
           <span>Create Gist&nbsp;</span>
           <span className="icon">

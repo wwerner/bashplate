@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import FileSaver from "file-saver";
+import Pizzly from "pizzly-js";
 import "bulma";
 import "./index.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -67,6 +69,52 @@ const App = () => {
 
   const onChangeDialect = (dialect: Dialects) => setDialect(dialect);
 
+  const onSave = () => {
+    const blob = new Blob([result.script], {
+      type: "text/plain;charset=utf-8",
+    });
+    FileSaver.saveAs(blob, "bashplate.sh");
+  };
+
+  const onCopy = () => {
+    navigator.clipboard.writeText(result.script);
+  };
+
+  const onCreateGist = () => {
+    const pizzly = new Pizzly({
+      host: "https://bashplate-oauth.herokuapp.com/",
+      publishableKey: "poUDkGprMhTt87VZbttW",
+    });
+
+    const github = pizzly.integration("github", {
+      setupId: "329a658d-d273-4ce0-aa0e-dadf444930bf",
+    });
+
+    github
+      .connect()
+      .then(({ authId }) => {
+        const filename = `bashplate-${Date.now()}.sh`;
+        console.log(authId, filename);
+
+        const body = {
+          description: result.description,
+          public: true,
+          files: {
+            [filename]: {
+              content: result.script,
+            },
+          },
+        };
+
+        return github.auth(authId).post("/gists", {
+          body: JSON.stringify(body),
+        });
+      })
+      .then((res) => res.json())
+      .then((json) => console.log(json))
+      .catch(console.error);
+  };
+
   return (
     <div id="app" className="section">
       <Router>
@@ -85,6 +133,9 @@ const App = () => {
               onChangeOption={onChangeOption}
               onRemoveOption={onRemoveOption}
               onChangeDialect={onChangeDialect}
+              onCopy={onCopy}
+              onSave={onSave}
+              onCreateGist={onCreateGist}
             />
           </Route>
         </Switch>

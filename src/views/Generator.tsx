@@ -21,6 +21,9 @@ export const Generator = ({
   onAddOption,
   onChangeOption,
   onRemoveOption,
+  onCopy,
+  onSave,
+  onCreateGist,
   onChangeDialect,
 }: GeneratorProps) => {
   const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +54,13 @@ export const Generator = ({
         onRemoveOption={onRemoveOption}
       />
 
-      <Result result={result} onChangeDialect={onChangeDialect} />
+      <Result
+        result={result}
+        onChangeDialect={onChangeDialect}
+        onCopy={onCopy}
+        onSave={onSave}
+        onCreateGist={onCreateGist}
+      />
     </div>
   );
 };
