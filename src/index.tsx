@@ -195,7 +195,7 @@ const App = () => {
                 <div className="media-content">
                   <div className="content">
                     <p>Meh. That did not work.</p>
-                    <pre>
+                    <pre style={{ whiteSpace: "pre-wrap" }}>
                       {
                         // @ts-expect-error: Don't want to include GH API types now
                         gist.message
