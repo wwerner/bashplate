@@ -10,6 +10,9 @@ type GeneratorProps = {
   onAddOption: () => void;
   onChangeOption: (option: OptionData) => void;
   onRemoveOption: (option: OptionData) => void;
+  onCopy: () => void;
+  onSave: () => void;
+  onCreateGist: () => void;
   onChangeDialect: any;
 };
 
