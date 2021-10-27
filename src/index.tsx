@@ -6,15 +6,24 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navigation, Footer } from "~components";
 import { About, Generator } from "~views";
 
-import { defaultOptions, OptionData, Dialects, templates } from "~model";
+import {
+  defaultScriptDescription,
+  defaultOptions,
+  OptionData,
+  Dialects,
+  templates,
+} from "~model";
 
 const App = () => {
   const [options, setOptions] = useState(defaultOptions);
   const [dialect, setDialect] = useState(Dialects.posix);
+  const [scriptDescription, setScriptDescription] = useState(
+    defaultScriptDescription
+  );
 
   const renderScript = (dialect: Dialects): string =>
     templates[dialect]({
-      description: "Bashplate Script Description",
+      description: scriptDescription,
       requiredOptions: options.filter((o) => o.required),
       flagOptions: options.filter((o) => o.isFlag),
       parameterOptions: options.filter((o) => !o.isFlag),
@@ -32,16 +41,18 @@ const App = () => {
     });
 
   const [result, setResult] = useState({
+    description: scriptDescription,
     script: renderScript(dialect),
     dialect: dialect,
   });
 
   useEffect(() => {
     setResult({
+      description: scriptDescription,
       script: renderScript(dialect),
       dialect: dialect,
     });
-  }, [options, dialect]);
+  }, [options, dialect, scriptDescription]);
 
   const onRemoveOption = (option: OptionData) =>
     setOptions(options.filter((o) => o.id !== option.id));
@@ -66,8 +77,10 @@ const App = () => {
           </Route>
           <Route path="/">
             <Generator
+              scriptDescription={scriptDescription}
               options={options}
               result={result}
+              onChangeDescription={setScriptDescription}
               onAddOption={onAddOption}
               onChangeOption={onChangeOption}
               onRemoveOption={onRemoveOption}

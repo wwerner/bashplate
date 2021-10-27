@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, MouseEventHandler } from "react";
+import React, { ChangeEvent } from "react";
 import { OptionData } from "~model";
 
 interface OptionProps {
