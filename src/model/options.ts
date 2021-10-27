@@ -10,6 +10,8 @@ export interface OptionData {
   exitCode?: number;
 }
 
+export const defaultScriptDescription = "Script Description";
+
 export const defaultOptions: OptionData[] = [
   {
     id: 0,
