@@ -42,19 +42,21 @@ export const Result = ({ result, onChangeDialect }: ResultProps) => {
         console.log(authId, filename);
 
         const body = {
-          description: "Generated using Bashplate",
+          description: "Generated using bashplate.",
+          public: true,
           files: {
-            "foo.txt": {
-              content: "foo content 2",
+            [filename]: {
+              content: result.script,
             },
-            //[filename]: result.script,
           },
         };
-        github
-          .auth(authId)
-          .post("/gists", { body })
-          .then((res) => console.log(res));
+
+        return github.auth(authId).post("/gists", {
+          body: JSON.stringify(body),
+        });
       })
+      .then((res) => res.json())
+      .then((json) => console.log(json))
       .catch(console.error);
   };
 
