@@ -1,8 +1,8 @@
 [![setup automated](https://img.shields.io/badge/Gitpod-ready_to_code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
 
-# Bash Plate
+# Bashplate
 
-Bash Plate generates bash boilerplate code for option parsing and validation.
+Bashplate generates bash boilerplate code for option parsing and validation.
 
 Currently deployed here: https://bashplate.wolfgang-werner.net
 
