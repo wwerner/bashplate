@@ -23,6 +23,12 @@ a.is-active {
     vertical-align: middle;
   }
 
+  .source-action-button {
+    margin-left: 1rem;
+    position: sticky;
+    top: .05rem
+  }
+
   #options {
     overflow: scroll
   }

@@ -4450,6 +4450,11 @@ picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
 
+pizzly-js@^0.2.8:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/pizzly-js/-/pizzly-js-0.2.8.tgz#5fb118c9e0faaf5716b3de5ab76aa276c06faf1c"
+  integrity sha512-770xh/dunk7034B5C0EZChRd9gIhhrDTvol5rt0EspM5Ny69kaluenjoh+jbu9HNJUZw019Iayqh9vTpItAFGA==
+
 pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
